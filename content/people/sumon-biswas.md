@@ -9,7 +9,7 @@ website: "https://sumonbis.github.io"
 github: "https://github.com/sumonbis"
 linkedin: "https://www.linkedin.com/in/sumonb"
 scholar: "https://scholar.google.com/citations?user=SD5GRJ4AAAAJ"
-photo: ""
+photo: "/images/people/sumon-biswas.jpg"
 research_interests: >
   Software engineering for AI, responsible AI engineering, LLMs and coding agents,
   fairness and bias in ML, formal verification, AI safety, technical debt in ML software
