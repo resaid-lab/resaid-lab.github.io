@@ -30,6 +30,5 @@ Sumon Biswas is an Assistant Professor in the Department of Computer and Data Sc
 ## Contact
 
 - **Email:** [sumon@case.edu](mailto:sumon@case.edu)
-- **Office:** Case School of Engineering, Cleveland, OH 44106
+- **Office:** Olin Building 608, Cleveland, OH 44106
 - **Phone:** 216.368.1494
-- **CV:** [Curriculum Vitae (PDF)](/uploads/CV_SumonBiswas.pdf)
