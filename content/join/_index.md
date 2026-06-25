@@ -51,14 +51,20 @@ with your background and research interests.
 <h3>Expression of Interest</h3>
 
 <!--
-  This form opens the visitor's email client with all fields pre-filled (no backend needed).
-  To collect submissions in an inbox instead, sign up at https://formspree.io, create a form,
-  and replace the two data-interest-form attributes below with:
-      action="https://formspree.io/f/your-real-id" method="POST"
-  then remove the data-interest-form attribute so the JS handler stops intercepting submits.
+  Submissions are delivered to your inbox via Web3Forms (https://web3forms.com) — a free
+  form backend for static sites, so no server is needed. To activate:
+    1. Go to https://web3forms.com, enter your email, and copy the Access Key it emails you.
+    2. Replace YOUR-WEB3FORMS-ACCESS-KEY below with that key, then commit + push.
+  Until a real key is set, the Submit button safely falls back to opening the visitor's
+  email app pre-filled (the previous behavior), so the form never appears broken.
 -->
 
-<form data-interest-form action="mailto:sumon@case.edu" method="POST" enctype="text/plain">
+<form data-interest-form action="https://api.web3forms.com/submit" method="POST">
+
+<input type="hidden" name="access_key" value="YOUR-WEB3FORMS-ACCESS-KEY">
+<input type="hidden" name="subject" value="New reSAID Lab — Expression of Interest">
+<input type="hidden" name="from_name" value="reSAID Lab Website">
+<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;">
 
 <div class="form-row">
 <div class="form-group">
@@ -106,11 +112,10 @@ with your background and research interests.
 </div>
 
 <div class="form-submit">
-<button type="submit" class="btn">Compose Email</button>
+<button type="submit" class="btn">Submit</button>
 <p class="form-note" data-interest-form-note>
-  Submitting opens your email app with everything filled in — just press send.
-  We aim to respond within 1–2 weeks. You can also email directly at
-  <a href="mailto:sumon@case.edu">sumon@case.edu</a> with subject
+  We aim to respond within 1–2 weeks. You can also email
+  <a href="mailto:sumon@case.edu">sumon@case.edu</a> directly with subject
   <em>[reSAID Prospective]</em>.
 </p>
 </div>

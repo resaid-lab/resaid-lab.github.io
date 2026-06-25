@@ -131,34 +131,62 @@
   if (!form) return;
 
   var note = document.querySelector('[data-interest-form-note]');
-  var labelFor = function (id) {
-    var el = form.querySelector('label[for="' + id + '"]');
-    return el ? el.textContent.replace('*', '').trim() : id;
+  var submitBtn = form.querySelector('[type="submit"]');
+  var keyInput = form.querySelector('[name="access_key"]');
+  // A real Web3Forms key is present only if it isn't the YOUR-... placeholder.
+  var hasKey = keyInput && keyInput.value && keyInput.value.indexOf('YOUR-') !== 0;
+
+  var setNote = function (html) { if (note) note.innerHTML = html; };
+
+  // Fallback used until a Web3Forms access key is configured: open the
+  // visitor's email client with the fields pre-filled (the previous behavior).
+  var sendMailtoFallback = function () {
+    var labelFor = function (id) {
+      var el = form.querySelector('label[for="' + id + '"]');
+      return el ? el.textContent.replace('*', '').trim() : id;
+    };
+    var lines = [];
+    ['name', 'email', 'position', 'institution', 'interests', 'links', 'message'].forEach(function (id) {
+      var input = form.querySelector('#' + id);
+      if (input && input.value.trim()) lines.push(labelFor(id) + ': ' + input.value.trim());
+    });
+    var nameInput = form.querySelector('#name');
+    var who = nameInput && nameInput.value.trim() ? ' — ' + nameInput.value.trim() : '';
+    window.location.href = 'mailto:sumon@case.edu?subject=' +
+      encodeURIComponent('[reSAID Prospective]' + who) +
+      '&body=' + encodeURIComponent(lines.join('\n\n'));
+    setNote('Your email app should now be open with your message pre-filled — press send to submit. If nothing opened, email <a href="mailto:sumon@case.edu">sumon@case.edu</a> directly.');
   };
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    var fields = ['name', 'email', 'position', 'institution', 'interests', 'links', 'message'];
-    var lines = [];
-    fields.forEach(function (id) {
-      var input = form.querySelector('#' + id);
-      if (input && input.value.trim()) {
-        lines.push(labelFor(id) + ': ' + input.value.trim());
-      }
-    });
+    if (!hasKey) { sendMailtoFallback(); return; }
 
-    var nameInput = form.querySelector('#name');
-    var who = nameInput && nameInput.value.trim() ? ' — ' + nameInput.value.trim() : '';
-    var subject = '[reSAID Prospective]' + who;
-    var body = lines.join('\n\n');
-    var mailto = 'mailto:sumon@case.edu?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
+    // Honeypot — if a bot checked the hidden field, drop silently.
+    var honeypot = form.querySelector('[name="botcheck"]');
+    if (honeypot && honeypot.checked) return;
 
-    window.location.href = mailto;
-    if (note) {
-      note.textContent = 'Your email app should now be open with your message pre-filled — press send to submit. If nothing opened, email sumon@case.edu directly.';
-    }
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+    setNote('Sending…');
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res.success) throw new Error(res.message || 'failed');
+        form.reset();
+        setNote('Thanks — your expression of interest has been submitted. We aim to respond within 1–2 weeks.');
+      })
+      .catch(function () {
+        setNote('Something went wrong submitting the form. Please email <a href="mailto:sumon@case.edu">sumon@case.edu</a> directly.');
+      })
+      .then(function () {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit'; }
+      });
   });
 })();
 
