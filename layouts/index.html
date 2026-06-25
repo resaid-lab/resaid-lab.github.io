@@ -1,0 +1,165 @@
+{{ define "main" }}
+
+<!-- ── Hero ───────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-badge">Case Western Reserve University &middot; Computer and Data Sciences</p>
+        <h1>
+          <span class="brand-re">re</span><span class="brand-said">S<span class="brand-ai">AI</span>D</span> Lab
+        </h1>
+        <p class="hero-tagline">
+          <span class="tl-re">Re</span>sponsible
+          <span class="tl-said">S</span>oftware and
+          <span class="tl-ai">AI</span>
+          <span class="tl-said">D</span>esign Lab
+        </p>
+        <p class="hero-mission">
+          The reSAID Lab studies the principles and practices for specifying,
+          building, evaluating, and maintaining AI-enabled software systems. We
+          combine empirical software engineering, formal methods, program
+          analysis, and systems-oriented experimentation to understand how LLMs,
+          coding agents, and ML components behave in real development settings.
+          Our goal is to develop rigorous methods and practical tools that
+          improve reliability, fairness, safety, and maintainability across the
+          lifecycle of responsible AI software.
+        </p>
+      </div>
+      {{ partial "hero-panels.html" . }}
+    </div>
+  </div>
+</section>
+
+<!-- ── Featured Projects ──────────────────────────────────── -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+    </div>
+    {{ $projects := where site.RegularPages "Section" "projects" }}
+    {{ $projects = where $projects ".Params.hidden" "ne" true }}
+    {{ $featured := where $projects ".Params.featured" true }}
+    {{ if not $featured }}
+      {{ $featured = first 6 $projects.ByDate.Reverse }}
+    {{ end }}
+    {{ partial "project-filter.html" (dict "pages" $featured "scope" "home-projects" "label" "Filter featured projects by topic") }}
+    <div class="projects-grid">
+      {{ range $featured }}{{ partial "project-card.html" (dict "page" . "scope" "home-projects") }}{{ end }}
+    </div>
+    <a href="{{ "/research/" | relURL }}" class="view-all">All projects &rarr;</a>
+  </div>
+</section>
+
+<!-- ── News ──────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">News</h2>
+    </div>
+    {{ $news := where site.RegularPages "Section" "news" }}
+    <div class="news-list">
+      {{ range first 5 $news.ByDate.Reverse }}{{ partial "news-item.html" (dict "page" . "compact" true) }}{{ end }}
+    </div>
+    <a href="{{ "/news/" | relURL }}" class="view-all">All news &rarr;</a>
+  </div>
+</section>
+
+<!-- ── People ─────────────────────────────────────────────── -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">People</h2>
+    </div>
+
+    {{/* PI */}}
+    {{ $pi := where site.RegularPages "Section" "people" }}
+    {{ $pi  = where $pi ".Params.role" "pi" }}
+    {{ range $pi }}
+    <div class="pi-card">
+      {{- if .Params.photo -}}
+        <img src="{{ .Params.photo }}" alt="{{ .Title }}" class="pi-photo" loading="lazy">
+      {{- else -}}
+        {{- $parts := split .Title " " -}}
+        <div class="pi-photo-placeholder" aria-hidden="true">
+          {{- if ge (len $parts) 2 -}}{{- substr (index $parts 0) 0 1 -}}{{- substr (index $parts 1) 0 1 -}}{{- else -}}{{- substr .Title 0 2 -}}{{- end -}}
+        </div>
+      {{- end }}
+      <div class="pi-info">
+        <h3><a href="{{ .RelPermalink }}" class="person-title-link">{{ .Title }}</a></h3>
+        <p class="pi-title">{{ .Params.role_label | default "Principal Investigator" }}</p>
+        {{- $position := .Params.position -}}
+        {{- $affiliation := .Params.affiliation -}}
+        <p class="pi-affil">{{ with $position }}{{ . }}{{ end }}{{ if and $position $affiliation }}, {{ end }}{{ with $affiliation }}{{ . }}{{ end }}</p>
+        {{ $person := . }}
+        <div class="pi-links">
+          {{ with .Params.email   }}<a href="mailto:{{ . }}" class="pi-link icon-link" aria-label="Email {{ $person.Title }}" title="Email">{{ partial "icon.html" "mail" }}</a>{{ end }}
+          {{ with .Params.website }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} website" title="Website">{{ partial "icon.html" "globe" }}</a>{{ end }}
+          {{ with .Params.github  }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} GitHub" title="GitHub">{{ partial "icon.html" "github" }}</a>{{ end }}
+          {{ with .Params.linkedin }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} LinkedIn" title="LinkedIn">{{ partial "icon.html" "linkedin" }}</a>{{ end }}
+          {{ with .Params.scholar }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} Google Scholar" title="Google Scholar">{{ partial "icon.html" "scholar" }}</a>{{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+
+    {{/* PhD Students */}}
+    {{ $phd := where site.RegularPages "Section" "people" }}
+    {{ $phd  = where $phd ".Params.role" "phd" }}
+    {{ if $phd }}
+    <p class="students-header">Ph.D. Students</p>
+    <div class="people-grid">
+      {{ range $phd }}{{ partial "person-card.html" . }}{{ end }}
+    </div>
+    {{ end }}
+
+    {{/* M.S. Students */}}
+    {{ $ms := where site.RegularPages "Section" "people" }}
+    {{ $ms  = where $ms ".Params.role" "ms" }}
+    {{ if $ms }}
+    <p class="students-header students-header-spaced">M.S. Students</p>
+    <div class="people-grid">
+      {{ range $ms }}{{ partial "person-card.html" . }}{{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Undergrad */}}
+    {{ $ug := where site.RegularPages "Section" "people" }}
+    {{ $ug  = where $ug ".Params.role" "undergrad" }}
+    {{ if $ug }}
+    <p class="students-header students-header-spaced">Undergraduate Researchers</p>
+    <div class="people-grid">
+      {{ range $ug }}{{ partial "person-card.html" . }}{{ end }}
+    </div>
+    {{ end }}
+
+    {{/* K-12 */}}
+    {{ $k12 := where site.RegularPages "Section" "people" }}
+    {{ $k12  = where $k12 ".Params.role" "k12" }}
+    {{ if $k12 }}
+    <p class="students-header students-header-spaced">High School</p>
+    <div class="people-grid">
+      {{ range $k12 }}{{ partial "person-card.html" . }}{{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- ── Recent Publications ────────────────────────────────── -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Recent Publications</h2>
+    </div>
+    {{ $pubs   := where site.RegularPages "Section" "publications" }}
+    {{ $pubs    = where $pubs ".Params.venue_short" "ne" "Preprint" }}
+    {{ $pubs    = $pubs.ByDate.Reverse }}
+    {{ $recent := first 10 $pubs }}
+    <div class="pub-list">
+      {{ range $recent }}{{ partial "pub-item.html" . }}{{ end }}
+    </div>
+    <a href="{{ "/publications/" | relURL }}" class="view-all">All publications &rarr;</a>
+  </div>
+</section>
+
+{{ end }}

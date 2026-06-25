@@ -1,0 +1,45 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">
+          <span class="brand-re">re</span><span class="brand-said">S<span class="brand-ai">AI</span>D</span> Lab
+        </span>
+        <p>
+          Responsible Software and AI Design Lab<br>
+          Department of Computer and Data Sciences<br>
+          Case School of Engineering<br>
+          Case Western Reserve University<br>
+          10900 Euclid Ave, Cleveland, OH 44106
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-list">
+          <a href="mailto:{{ .Site.Params.pi_email }}" class="footer-contact-link">
+            {{ partial "icon.html" "mail" }}
+            <span>{{ .Site.Params.pi_email }}</span>
+          </a>
+          <a href="tel:+12163681494" class="footer-contact-link">
+            {{ partial "icon.html" "phone" }}
+            <span>+1 216 368 1494</span>
+          </a>
+          <a href="{{ .Site.Params.github }}" class="footer-contact-link" target="_blank" rel="noopener">
+            {{ partial "icon.html" "github" }}
+            <span>github.com/resaid-lab</span>
+          </a>
+          <a href="https://engineering.case.edu/computer-and-data-sciences"
+             class="footer-contact-link" target="_blank" rel="noopener">
+            {{ partial "icon.html" "landmark" }}
+            <span>engineering.case.edu/computer-and-data-sciences</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ now.Year }} reSAID Lab &mdash; Case Western Reserve University</span>
+    </div>
+  </div>
+</footer>

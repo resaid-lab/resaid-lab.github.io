@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <h1 class="project-single-title">{{ .Title }}</h1>
+    {{ partial "project-topics.html" (dict "page" . "compact" false) }}
+  </div>
+</div>
+
+<section class="section">
+  <div class="container container-readable">
+
+    {{ with .Params.description }}
+    <p class="page-lead">{{ . }}</p>
+    {{ end }}
+
+    <!-- People -->
+    {{ with .Params.people }}
+    <p class="project-people">
+      <strong>People:</strong> {{ delimit . ", " }}
+    </p>
+    {{ end }}
+
+    {{ if .Content }}
+    <div class="rich-content">{{ .Content }}</div>
+    {{ end }}
+
+    {{ partial "project-publications.html" (dict "page" . "compact" false) }}
+
+    {{ partial "related-projects.html" . }}
+
+    <p class="detail-back">
+      <a href="{{ "/research/" | relURL }}" class="back-link">&larr; Back to Research</a>
+    </p>
+  </div>
+</section>
+{{ end }}

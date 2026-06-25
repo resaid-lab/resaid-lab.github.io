@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
+  </div>
+</div>
+<section class="section">
+  <div class="container">
+    {{ if .Content }}
+    <div class="rich-content rich-content-intro">{{ .Content }}</div>
+    {{ end }}
+    {{ if .Pages }}
+    <div class="pub-list">
+      {{ range .Pages }}
+      <div class="generic-list-item">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ with .Summary }}<p>{{ . }}</p>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

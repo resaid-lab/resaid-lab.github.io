@@ -1,0 +1,111 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#18385c">
+
+{{- /* Per-page description: prefer page-specific content, fall back to the site description.
+       chomp strips the trailing newline left by YAML folded scalars (`>`). */ -}}
+{{- $desc := .Description | default .Params.abstract | default .Params.bio | default .Params.description | default .Params.summary | default .Site.Params.description -}}
+{{- $desc = $desc | plainify | chomp | truncate 280 -}}
+<meta name="description" content="{{ $desc }}">
+
+{{- $shareTitle := cond .IsHome .Site.Title .Title -}}
+{{- $ogImage := "images/og-default.png" | absURL -}}
+
+<title>
+  {{- if .IsHome -}}
+    {{ .Site.Title }} — {{ .Site.Params.lab_full_name }}
+  {{- else -}}
+    {{ .Title }} | {{ .Site.Title }}
+  {{- end -}}
+</title>
+
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- Icons -->
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon-32.png" | relURL }}" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ $shareTitle }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $shareTitle }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
+{{- /* Highwire citation tags so Google Scholar can index publication pages. */ -}}
+{{- if and .IsPage (eq .Section "publications") -}}
+<meta name="citation_title" content="{{ .Title }}">
+{{- range (split (.Params.authors | default "" | plainify) ", ") }}
+<meta name="citation_author" content="{{ trim . " " }}">
+{{- end }}
+{{- with .Params.year }}
+<meta name="citation_publication_date" content="{{ . }}">{{ end }}
+{{- with .Params.venue }}
+<meta name="citation_conference_title" content="{{ . }}">{{ end }}
+{{- with .Params.doi }}
+<meta name="citation_doi" content="{{ replaceRE `^https?://(dx\.)?doi\.org/` "" . }}">{{ end }}
+{{- with .Params.arxiv }}
+<meta name="citation_arxiv_id" content="{{ replaceRE `^https?://arxiv\.org/(abs|pdf)/` "" . }}">{{ end }}
+{{- with .Params.pdf }}
+<meta name="citation_pdf_url" content="{{ . | absURL }}">{{ end }}
+{{- end -}}
+
+<!-- Self-hosted fonts; preload the two above-the-fold faces (body + heading) -->
+<link rel="preload" href="{{ "fonts/source-sans-3-400-normal-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/lora-600-normal-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{ $fonts := resources.Get "css/fonts.css" }}
+{{ $main := resources.Get "css/main.css" }}
+{{ $css := slice $fonts $main | resources.Concat "css/bundle.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+{{ if .OutputFormats.Get "RSS" -}}
+<link rel="alternate" type="application/rss+xml"
+      title="{{ .Site.Title }}"
+      href="{{ (.OutputFormats.Get "RSS").Permalink }}">
+{{- end }}
+
+{{- /* Structured data (JSON-LD) */ -}}
+{{- if .IsHome -}}
+{{- $org := dict
+     "@context" "https://schema.org"
+     "@type" "ResearchOrganization"
+     "name" .Site.Params.lab_full_name
+     "alternateName" .Site.Params.lab_name
+     "url" .Site.Home.Permalink
+     "logo" $ogImage
+     "description" (.Site.Params.description | plainify | chomp)
+     "parentOrganization" (dict "@type" "CollegeOrUniversity" "name" .Site.Params.university)
+     "sameAs" (slice .Site.Params.github) -}}
+<script type="application/ld+json">
+{{ jsonify (dict "indent" "  ") $org | safeJS }}
+</script>
+{{- else if and .IsPage (eq .Section "publications") -}}
+{{- $authors := slice -}}
+{{- range (split (.Params.authors | default "" | plainify) ", ") -}}
+  {{- $authors = $authors | append (dict "@type" "Person" "name" (trim . " ")) -}}
+{{- end -}}
+{{- $article := dict
+     "@context" "https://schema.org"
+     "@type" "ScholarlyArticle"
+     "headline" .Title
+     "name" .Title
+     "author" $authors
+     "url" .Permalink -}}
+{{- with .Params.year }}{{ $article = merge $article (dict "datePublished" (printf "%v" .)) }}{{ end -}}
+{{- with .Params.venue }}{{ $article = merge $article (dict "publication" .) }}{{ end -}}
+{{- with .Params.abstract }}{{ $article = merge $article (dict "abstract" (. | plainify | chomp)) }}{{ end -}}
+{{- with .Params.doi }}{{ $article = merge $article (dict "sameAs" .) }}{{ end -}}
+<script type="application/ld+json">
+{{ jsonify (dict "indent" "  ") $article | safeJS }}
+</script>
+{{- end -}}

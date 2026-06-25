@@ -1,0 +1,56 @@
+{{ define "main" }}
+<section class="section section-detail">
+  <div class="container">
+
+    <div class="pi-card">
+      {{- if .Params.photo -}}
+        <img src="{{ .Params.photo }}" alt="{{ .Title }}" class="pi-photo" loading="lazy">
+      {{- else -}}
+        {{- $parts := split .Title " " -}}
+        <div class="pi-photo-placeholder" aria-hidden="true">
+          {{- if ge (len $parts) 2 -}}
+            {{- substr (index $parts 0) 0 1 -}}{{- substr (index $parts 1) 0 1 -}}
+          {{- else -}}
+            {{- substr .Title 0 2 -}}
+          {{- end -}}
+        </div>
+      {{- end }}
+
+      <div class="pi-info">
+        <h1 class="person-single-title">{{ .Title }}</h1>
+        {{- if eq .Params.role "pi" -}}
+        <p class="pi-title">{{ .Params.role_label | default "Principal Investigator" }}</p>
+        {{- $position := .Params.position -}}
+        {{- $affiliation := .Params.affiliation -}}
+        <p class="pi-affil">{{ with $position }}{{ . }}{{ end }}{{ if and $position $affiliation }}, {{ end }}{{ with $affiliation }}{{ . }}{{ end }}</p>
+        {{- else -}}
+        <p class="pi-title">{{ .Params.position | default (.Params.role_label | default .Params.role) }}</p>
+        {{ with .Params.affiliation }}<p class="pi-affil">{{ . }}</p>{{ end }}
+        {{- end }}
+        {{ $person := . }}
+        <div class="pi-links">
+          {{ with .Params.email   }}<a href="mailto:{{ . }}" class="pi-link icon-link" aria-label="Email {{ $person.Title }}" title="Email">{{ partial "icon.html" "mail" }}</a>{{ end }}
+          {{ with .Params.website }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} website" title="Website">{{ partial "icon.html" "globe" }}</a>{{ end }}
+          {{ with .Params.github  }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} GitHub" title="GitHub">{{ partial "icon.html" "github" }}</a>{{ end }}
+          {{ with .Params.linkedin }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} LinkedIn" title="LinkedIn">{{ partial "icon.html" "linkedin" }}</a>{{ end }}
+          {{ with .Params.scholar }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} Google Scholar" title="Google Scholar">{{ partial "icon.html" "scholar" }}</a>{{ end }}
+        </div>
+        {{ with .Params.research_interests }}
+        <p class="pi-interests">
+          <strong>Research interests:</strong> {{ . }}
+        </p>
+        {{ end }}
+        {{ with .Params.bio }}<p class="pi-bio">{{ . }}</p>{{ end }}
+      </div>
+    </div>
+
+    {{ if .Content }}
+    <div class="rich-content detail-content">{{ .Content }}</div>
+    {{ end }}
+
+    <p class="detail-back">
+      <a href="{{ "/people/" | relURL }}" class="back-link">&larr; Back to People</a>
+    </p>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,121 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <h1>People</h1>
+    <p>The reSAID Lab team at Case Western Reserve University</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    {{/* Principal Investigator */}}
+    {{ $pi := where .Pages ".Params.role" "pi" }}
+    {{ if $pi }}
+    <div class="people-group">
+      <h2 class="people-group-title">Principal Investigator</h2>
+      {{ range $pi }}
+      <div class="pi-card">
+        {{- if .Params.photo -}}
+          <img src="{{ .Params.photo }}" alt="{{ .Title }}" class="pi-photo" loading="lazy">
+        {{- else -}}
+          {{- $parts := split .Title " " -}}
+          <div class="pi-photo-placeholder" aria-hidden="true">
+            {{- if ge (len $parts) 2 -}}{{- substr (index $parts 0) 0 1 -}}{{- substr (index $parts 1) 0 1 -}}{{- else -}}{{- substr .Title 0 2 -}}{{- end -}}
+          </div>
+        {{- end }}
+        <div class="pi-info">
+          <h3><a href="{{ .RelPermalink }}" class="person-title-link">{{ .Title }}</a></h3>
+          <p class="pi-title">{{ .Params.role_label | default "Principal Investigator" }}</p>
+          {{- $position := .Params.position -}}
+          {{- $affiliation := .Params.affiliation -}}
+          <p class="pi-affil">{{ with $position }}{{ . }}{{ end }}{{ if and $position $affiliation }}, {{ end }}{{ with $affiliation }}{{ . }}{{ end }}</p>
+          {{ $person := . }}
+          <div class="pi-links">
+            {{ with .Params.email   }}<a href="mailto:{{ . }}" class="pi-link icon-link" aria-label="Email {{ $person.Title }}" title="Email">{{ partial "icon.html" "mail" }}</a>{{ end }}
+            {{ with .Params.website }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} website" title="Website">{{ partial "icon.html" "globe" }}</a>{{ end }}
+            {{ with .Params.github  }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} GitHub" title="GitHub">{{ partial "icon.html" "github" }}</a>{{ end }}
+            {{ with .Params.linkedin }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} LinkedIn" title="LinkedIn">{{ partial "icon.html" "linkedin" }}</a>{{ end }}
+            {{ with .Params.scholar }}<a href="{{ . }}" class="pi-link icon-link" target="_blank" rel="noopener" aria-label="{{ $person.Title }} Google Scholar" title="Google Scholar">{{ partial "icon.html" "scholar" }}</a>{{ end }}
+          </div>
+          {{ with .Params.research_interests }}
+          <p class="pi-interests">
+            <strong>Research interests:</strong> {{ . }}
+          </p>
+          {{ end }}
+          {{ with .Params.bio }}<p class="pi-bio">{{ . }}</p>{{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* PhD Students */}}
+    {{ $phd := where .Pages ".Params.role" "phd" }}
+    {{ if $phd }}
+    <div class="people-group">
+      <h2 class="people-group-title">Ph.D. Students</h2>
+      <div class="people-grid">
+        {{ range $phd }}{{ partial "person-card.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{/* MS Students */}}
+    {{ $ms := where .Pages ".Params.role" "ms" }}
+    {{ if $ms }}
+    <div class="people-group">
+      <h2 class="people-group-title">M.S. Students</h2>
+      <div class="people-grid">
+        {{ range $ms }}{{ partial "person-card.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{/* Undergrad */}}
+    {{ $ug := where .Pages ".Params.role" "undergrad" }}
+    {{ if $ug }}
+    <div class="people-group">
+      <h2 class="people-group-title">Undergraduate Researchers</h2>
+      <div class="people-grid">
+        {{ range $ug }}{{ partial "person-card.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{/* K-12 */}}
+    {{ $k12 := where .Pages ".Params.role" "k12" }}
+    {{ if $k12 }}
+    <div class="people-group">
+      <h2 class="people-group-title">K-12 Interns</h2>
+      <div class="people-grid">
+        {{ range $k12 }}{{ partial "person-card.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{/* Collaborators */}}
+    {{ $collab := where .Pages ".Params.role" "collaborator" }}
+    {{ if $collab }}
+    <div class="people-group">
+      <h2 class="people-group-title">Collaborators</h2>
+      <div class="people-grid">
+        {{ range $collab }}{{ partial "person-card.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{/* Alumni */}}
+    {{ $alumni := where .Pages ".Params.role" "alumni" }}
+    {{ if $alumni }}
+    <div class="people-group">
+      <h2 class="people-group-title">Alumni</h2>
+      <div class="people-grid">
+        {{ range $alumni }}{{ partial "person-card.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}

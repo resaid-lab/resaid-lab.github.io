@@ -1,0 +1,76 @@
+baseURL: 'https://resaid-lab.github.io/'
+locale: 'en-US'
+title: 'reSAID Lab'
+disableHugoGeneratorInject: true
+enableRobotsTXT: true
+
+# Publications are dated by venue date, which can be in the future
+# (e.g., a paper accepted to a conference that has not happened yet).
+buildFuture: true
+
+params:
+  lab_name: "reSAID Lab"
+  lab_full_name: "Responsible Software and AI Design Lab"
+  university: "Case Western Reserve University"
+  github: "https://github.com/resaid-lab"
+  tagline: "Designing responsible AI-enabled software systems."
+  mission: >
+    The reSAID Lab studies how AI-enabled software systems are specified, built,
+    evaluated, and maintained. We combine empirical software engineering, formal
+    methods, and systems-oriented experimentation to improve the trustworthiness
+    of LLMs, coding agents, and ML software.
+  pi_name: "Sumon Biswas"
+  pi_email: "sumon@case.edu"
+  description: >
+    reSAID Lab, the Responsible Software and AI Design Lab at Case Western
+    Reserve University, studies how AI-enabled software systems are specified,
+    built, evaluated, and maintained.
+
+menu:
+  main:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "People"
+      url: "/people/"
+      weight: 2
+    - name: "Research"
+      url: "/research/"
+      weight: 3
+    - name: "Publications"
+      url: "/publications/"
+      weight: 4
+    - name: "News"
+      url: "/news/"
+      weight: 6
+    - name: "Posts"
+      url: "/posts/"
+      weight: 7
+    - name: "Join Us"
+      url: "/join/"
+      weight: 8
+
+taxonomies:
+  tag: "tags"
+  category: "categories"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: github
+    lineNos: false
+
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+    - RSS
+
+pagination:
+  pagerSize: 20
+
+uglyURLs: false

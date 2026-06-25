@@ -1,0 +1,24 @@
+<div class="pub-item">
+  <p class="pub-title">
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </p>
+  <p class="pub-authors">{{ .Params.authors | markdownify | plainify }}</p>
+  <p class="pub-venue">
+    {{ partial "pub-venue.html" . }}
+  </p>
+  <div class="pub-links">
+    {{ with .Params.bibtex }}
+      {{- $citeID := printf "cite-%s" $.File.UniqueID -}}
+      <button type="button" class="pub-link pub-cite-button pub-link-cite" data-cite-trigger data-cite-title="{{ $.Title }}" data-cite-target="{{ $citeID }}" aria-label="Cite: {{ $.Title }}" title="Cite">{{ partial "icon.html" "quote" }}Cite</button>
+      <template id="{{ $citeID }}">{{ . }}</template>
+    {{ end }}
+    {{ with .Params.doi      }}<a href="{{ . }}" class="pub-link" target="_blank" rel="noopener" aria-label="DOI: {{ $.Title }}" title="DOI">{{ partial "icon.html" "link" }}DOI</a>{{ end }}
+    {{ with .Params.arxiv    }}<a href="{{ . }}" class="pub-link" target="_blank" rel="noopener" aria-label="arXiv: {{ $.Title }}" title="arXiv">{{ partial "icon.html" "arxiv" }}arXiv</a>{{ end }}
+    {{ with .Params.code     }}<a href="{{ . }}" class="pub-link pub-link-icon pub-code-link" target="_blank" rel="noopener" aria-label="Code: {{ $.Title }}" title="Code">{{ partial "icon.html" "github" }}</a>{{ end }}
+    {{ with .Params.data     }}<a href="{{ . }}" class="pub-link" target="_blank" rel="noopener" aria-label="Data: {{ $.Title }}" title="Data">{{ partial "icon.html" "data" }}Data</a>{{ end }}
+    {{ with .Params.artifact }}<a href="{{ . }}" class="pub-link" target="_blank" rel="noopener" aria-label="Artifact: {{ $.Title }}" title="Artifact">{{ partial "icon.html" "artifact" }}Artifact</a>{{ end }}
+    {{ with .Params.slides   }}<a href="{{ . }}" class="pub-link" target="_blank" rel="noopener" aria-label="Slides: {{ $.Title }}" title="Slides">{{ partial "icon.html" "slides" }}Slides</a>{{ end }}
+    {{ with .Params.video    }}<a href="{{ . }}" class="pub-link" target="_blank" rel="noopener" aria-label="Video: {{ $.Title }}" title="Video">{{ partial "icon.html" "video" }}Video</a>{{ end }}
+    {{ with .Params.pdf      }}<a href="{{ . }}" class="pub-link pub-link-icon pub-pdf-link" target="_blank" rel="noopener" aria-label="PDF: {{ $.Title }}" title="PDF">{{ partial "icon.html" "pdf" }}</a>{{ end }}
+  </div>
+</div>

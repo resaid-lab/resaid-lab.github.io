@@ -1,0 +1,15 @@
+{{- $page := .page -}}
+{{- $scope := .scope | default "projects" -}}
+{{- $catSlugs := slice -}}
+{{- range $page.Params.categories -}}
+  {{- $catSlugs = $catSlugs | append (. | urlize) -}}
+{{- end -}}
+<article class="project-card" data-project-card data-filter-scope="{{ $scope }}" data-categories="{{ delimit $catSlugs " " }}">
+  <div class="project-card-header">
+    <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
+  </div>
+  <div class="project-body">
+    <p class="project-desc">{{ $page.Params.description }}</p>
+    {{ partial "project-publications.html" (dict "page" $page "compact" true) }}
+  </div>
+</article>

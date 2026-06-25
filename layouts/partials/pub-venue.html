@@ -1,0 +1,14 @@
+{{- $venue := .Params.venue | default "" -}}
+{{- $short := .Params.venue_short | default "" -}}
+{{- $year := printf "%v" (.Params.year | default "") -}}
+{{- $cleanVenue := $venue -}}
+{{- if $year -}}
+  {{- $cleanVenue = replaceRE (printf `\s*\([^)]*%s[^)]*\)` $year) "" $cleanVenue -}}
+  {{- $cleanVenue = replaceRE (printf `\s+%s\s*$` $year) "" $cleanVenue -}}
+{{- end -}}
+{{- $cleanVenue = replaceRE `\s+` " " $cleanVenue -}}
+{{- $cleanVenue = trim $cleanVenue " " -}}
+{{- /* Format: Full Conference Name (ACRONYM) YEAR — acronym bold, used consistently */ -}}
+{{- with $cleanVenue -}}<span class="pub-venue-name">{{ . }}</span>{{- end -}}
+{{- with $short -}}{{ if $cleanVenue }} {{ end }}<span class="pub-venue-acronym">(<strong>{{ . }}</strong>)</span>{{- end -}}
+{{- with $year }} <span class="pub-venue-year">{{ . }}</span>{{ end -}}

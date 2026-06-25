@@ -1,0 +1,14 @@
+{{- $page := .page -}}
+{{- $compact := .compact | default false -}}
+{{- if or $page.Params.categories $page.Params.tags -}}
+<div class="project-topics">
+  {{- with $page.Params.categories -}}
+    {{- range . -}}<span class="topic-chip topic-chip-category">{{ . }}</span>{{- end -}}
+  {{- end -}}
+  {{- if not $compact -}}
+    {{- with $page.Params.tags -}}
+      {{- range . -}}<span class="topic-chip">{{ . }}</span>{{- end -}}
+    {{- end -}}
+  {{- end -}}
+</div>
+{{- end -}}

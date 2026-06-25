@@ -1,0 +1,18 @@
+<div class="person-card">
+  <a href="{{ .RelPermalink }}">
+    {{- if .Params.photo -}}
+      <img src="{{ .Params.photo }}" alt="{{ .Title }}" class="person-photo" loading="lazy">
+    {{- else -}}
+      <div class="person-photo-placeholder" aria-hidden="true">
+        {{- $parts := split .Title " " -}}
+        {{- if ge (len $parts) 2 -}}
+          {{- substr (index $parts 0) 0 1 -}}{{- substr (index $parts 1) 0 1 -}}
+        {{- else -}}
+          {{- substr .Title 0 2 -}}
+        {{- end -}}
+      </div>
+    {{- end }}
+    <p class="person-name">{{ .Title }}</p>
+    <p class="person-role">{{ .Params.role_label | default .Params.role }}</p>
+  </a>
+</div>

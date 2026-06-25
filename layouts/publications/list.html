@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <h1>Publications</h1>
+    <p>Research papers from the reSAID Lab</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    {{ $preprints := where .Pages ".Params.venue_short" "Preprint" }}
+    {{ $papers    := where .Pages ".Params.venue_short" "ne" "Preprint" }}
+
+    {{ if $preprints }}
+    <div class="group-block">
+      <h2 class="group-title">Preprints</h2>
+      <div class="pub-list">
+        {{ range $preprints.ByDate.Reverse }}{{ partial "pub-item.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{ if $papers }}
+    <div class="group-block">
+      <h2 class="group-title">Conference and Journal Papers</h2>
+      {{ range sort ($papers.GroupByDate "2006") "Key" "desc" }}
+      <h3 class="year-title">{{ .Key }}</h3>
+      <div class="pub-list">
+        {{ range .Pages.ByDate.Reverse }}{{ partial "pub-item.html" . }}{{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

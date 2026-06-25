@@ -1,0 +1,40 @@
+{{- $page := .page -}}
+{{- $compact := .compact | default false -}}
+{{- $slugs := $page.Params.publications -}}
+{{- if $slugs -}}
+  {{- $limit := cond $compact 3 (len $slugs) -}}
+  <div class="{{ if $compact }}project-papers project-papers-compact{{ else }}project-papers{{ end }}">
+    {{- if $compact -}}
+      <div class="project-paper-compact-row">
+        <span class="project-paper-tags">
+          {{- range $i, $slug := first $limit $slugs -}}
+            {{- $pub := site.GetPage (printf "/publications/%s" $slug) -}}
+            {{- with $pub -}}
+              {{- $venue := .Params.venue_short | default "Paper" -}}
+              {{- if eq $venue "Preprint" -}}{{- $venue = "arXiv" -}}{{- end -}}
+              {{- $year := printf "%v" .Params.year -}}
+              {{- if gt $i 0 -}}<span class="project-paper-separator" aria-hidden="true">{{ partial "icon.html" "dot" }}</span>{{- end -}}
+              <a href="{{ .RelPermalink }}">{{ $venue }}'{{ substr $year 2 }}</a>
+            {{- end -}}
+          {{- end -}}
+        </span>
+        {{- if gt (len $slugs) $limit -}}
+        <span class="project-papers-more">+{{ sub (len $slugs) $limit }}</span>
+        {{- end -}}
+      </div>
+    {{- else -}}
+      <p class="project-papers-label">Related Publications</p>
+      <ol class="project-paper-list">
+        {{- range first $limit $slugs -}}
+          {{- $pub := site.GetPage (printf "/publications/%s" .) -}}
+          {{- with $pub -}}
+          <li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <span>{{ .Params.venue_short | default .Params.venue }} {{ .Params.year }}</span>
+          </li>
+          {{- end -}}
+        {{- end -}}
+      </ol>
+    {{- end -}}
+  </div>
+{{- end -}}

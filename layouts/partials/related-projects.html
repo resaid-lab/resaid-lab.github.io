@@ -1,0 +1,34 @@
+{{- $page := . -}}
+{{- $related := slice -}}
+{{- $pageCategories := $page.Params.categories | default (slice) -}}
+{{- $pageTags := $page.Params.tags | default (slice) -}}
+{{- $projectPages := where site.RegularPages "Section" "projects" -}}
+{{- $projectPages = where $projectPages ".Params.hidden" "ne" true -}}
+{{- range $projectPages -}}
+  {{- if ne .RelPermalink $page.RelPermalink -}}
+    {{- $score := 0 -}}
+    {{- range .Params.categories -}}
+      {{- if in $pageCategories . -}}{{- $score = add $score 2 -}}{{- end -}}
+    {{- end -}}
+    {{- range .Params.tags -}}
+      {{- if in $pageTags . -}}{{- $score = add $score 1 -}}{{- end -}}
+    {{- end -}}
+    {{- if gt $score 0 -}}
+      {{- $related = $related | append (dict "page" . "score" $score) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $related -}}
+<div class="related-projects">
+  <h2 class="project-single-section-title">Related Projects</h2>
+  <div class="related-project-list">
+    {{- range first 3 (sort $related "score" "desc") -}}
+    {{- $item := .page -}}
+    <a href="{{ $item.RelPermalink }}" class="related-project-link">
+      <span>{{ $item.Title }}</span>
+      {{ with $item.Params.categories }}<small>{{ delimit . " · " }}</small>{{ end }}
+    </a>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}

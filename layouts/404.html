@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="section section-detail">
+  <div class="container container-readable text-center">
+    <p class="hero-badge">Error 404</p>
+    <h1>Page not found</h1>
+    <p class="page-lead">
+      The page you are looking for doesn&rsquo;t exist or may have moved.
+      Try one of these instead:
+    </p>
+    <p class="mt-2">
+      <a href="{{ "/" | relURL }}" class="btn">Home</a>
+      <a href="{{ "/research/" | relURL }}" class="btn btn-outline">Research</a>
+      <a href="{{ "/publications/" | relURL }}" class="btn btn-outline">Publications</a>
+      <a href="{{ "/people/" | relURL }}" class="btn btn-outline">People</a>
+    </p>
+  </div>
+</section>
+{{ end }}

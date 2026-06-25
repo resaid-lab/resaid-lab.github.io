@@ -1,0 +1,27 @@
+{{- $page := .page -}}
+{{- $compact := .compact | default false -}}
+{{- $heading := .heading | default "h3" -}}
+<article class="news-item{{ if $compact }} news-item-compact{{ end }}">
+  <time class="news-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2006" }}</time>
+  <div class="news-body">
+    <div class="news-heading-row">
+      {{ with $page.Params.category }}<span class="news-category">{{ . }}</span>{{ end }}
+      {{- if eq $heading "h2" -}}
+      <h2 class="news-title">{{- $page.Title -}}</h2>
+      {{- else -}}
+      <h3 class="news-title">{{- $page.Title -}}</h3>
+      {{- end -}}
+    </div>
+    {{- $related := false -}}
+    {{- with $page.Params.related_publication -}}
+      {{- $related = site.GetPage (printf "/publications/%s" .) -}}
+    {{- end -}}
+    {{ if or $page.Params.summary (or $related $page.Params.external_url) }}
+    <p>
+      {{- with $page.Params.summary }}{{ . }}{{ end -}}
+      {{- with $related }} <a href="{{ .RelPermalink }}" class="news-related" aria-label="Related paper: {{ .Title }}">Related paper{{ partial "icon.html" "arrow" }}</a>{{ end -}}
+      {{- with $page.Params.external_url }} <a href="{{ . }}" class="news-related" target="_blank" rel="noopener" aria-label="External link: {{ $page.Title }}">Link{{ partial "icon.html" "external" }}</a>{{ end -}}
+    </p>
+    {{ end }}
+  </div>
+</article>

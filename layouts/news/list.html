@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <h1>News</h1>
+    <p>{{ .Description }}</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container container-readable">
+    <div class="news-list news-list-full">
+      {{ range .Pages.ByDate.Reverse }}
+      {{ partial "news-item.html" (dict "page" . "compact" false "heading" "h2") }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

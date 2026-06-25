@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="section section-detail">
+  <div class="container container-article">
+
+    <p class="detail-topline">
+      <a href="{{ "/posts/" | relURL }}" class="back-link">&larr; All Posts</a>
+    </p>
+
+    <h1 class="post-single-title">{{ .Title }}</h1>
+    <p class="post-meta">
+      {{ .Date.Format "January 2, 2006" }}{{ with .Params.author }} &middot; {{ . }}{{ end }}
+    </p>
+
+    <div class="rich-content post-body">{{ .Content }}</div>
+
+    <p class="detail-back">
+      <a href="{{ "/posts/" | relURL }}" class="back-link">&larr; All Posts</a>
+    </p>
+  </div>
+</section>
+{{ end }}

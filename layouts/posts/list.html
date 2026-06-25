@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <h1>Posts</h1>
+    <p>Notes and reflections on our research</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container container-readable">
+    <div class="post-list">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="post-item">
+        <h2 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="post-meta">
+          {{ .Date.Format "January 2, 2006" }}{{ with .Params.author }} &middot; {{ . }}{{ end }}
+        </p>
+        {{ with .Params.description }}<p class="post-excerpt">{{ . }}</p>{{ end }}
+        <a href="{{ .RelPermalink }}" class="pub-link">{{ partial "icon.html" "arrow" }}Read more</a>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

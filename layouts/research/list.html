@@ -1,0 +1,52 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <h1>Research</h1>
+    <p>{{ .Site.Params.tagline }}</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    {{ with .Content }}<div class="rich-content research-intro">{{ . }}</div>{{ end }}
+
+    <div class="section-header">
+      <h2 class="section-title">Research Themes</h2>
+      <p class="section-subtitle">
+        We work at the intersection of software engineering and artificial intelligence,
+        with an emphasis on building responsible, trustworthy AI systems.
+      </p>
+    </div>
+
+    <div class="research-themes-grid">
+      {{ range hugo.Data.themes }}
+      <div class="research-theme-item">
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        Active and recent projects, organized by topic. Each project links to the
+        papers behind it.
+      </p>
+    </div>
+
+    {{ $projects := where site.RegularPages "Section" "projects" }}
+    {{ $projects = where $projects ".Params.hidden" "ne" true }}
+    {{ $projects = $projects.ByDate.Reverse }}
+    {{ partial "project-filter.html" (dict "pages" $projects "scope" "research-projects" "label" "Filter projects by topic") }}
+    <div class="projects-grid">
+      {{ range $projects }}{{ partial "project-card.html" (dict "page" . "scope" "research-projects") }}{{ end }}
+    </div>
+    <a href="{{ "/publications/" | relURL }}" class="view-all">All publications &rarr;</a>
+  </div>
+</section>
+{{ end }}

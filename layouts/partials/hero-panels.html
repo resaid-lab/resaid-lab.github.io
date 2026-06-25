@@ -1,0 +1,21 @@
+{{- with .Params.announcements -}}
+<aside class="hero-panels" aria-label="Lab announcements">
+  <section class="hero-panel">
+    {{- range . -}}
+    {{- $item := . -}}
+    <div class="hero-panel-item">
+      {{- with .label }}<p class="hero-panel-label">{{ . }}</p>{{ end -}}
+      {{- with .text }}<p>{{ . | markdownify }}</p>{{ end -}}
+      {{- with .url -}}
+        {{- $url := . -}}
+        {{- $external := or (hasPrefix $url "http://") (hasPrefix $url "https://") -}}
+        {{- $label := $item.url_text | default "More" -}}
+        <a href="{{ if $external }}{{ $url }}{{ else }}{{ $url | relURL }}{{ end }}" class="hero-panel-link"{{ if $external }} target="_blank" rel="noopener"{{ end }}>
+          {{ $label }}{{ partial "icon.html" "arrow" }}
+        </a>
+      {{- end -}}
+    </div>
+    {{- end -}}
+  </section>
+</aside>
+{{- end -}}

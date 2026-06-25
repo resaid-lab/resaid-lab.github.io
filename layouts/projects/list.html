@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <h1>Projects</h1>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container container-readable">
+    <p class="page-lead">
+      Projects have moved to the <a href="{{ "/research/" | relURL }}">Research</a> page.
+    </p>
+    <p><a href="{{ "/research/" | relURL }}" class="back-link">Go to Research &rarr;</a></p>
+  </div>
+</section>
+
+<script>window.location.replace("{{ "/research/" | relURL }}");</script>
+{{ end }}
