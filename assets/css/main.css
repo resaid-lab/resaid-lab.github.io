@@ -249,7 +249,6 @@ pre code {
   margin-bottom: 0;
 }
 
-.year-title,
 .students-header,
 .pub-single-section-title {
   margin: 1rem 0 0.3rem;
@@ -257,6 +256,72 @@ pre code {
   font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+/* Year markers in the publications list — prominent serif label with a rule */
+.year-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 1.6rem 0 0.85rem;
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.year-title::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--glass-hairline-strong);
+}
+
+.group-block .year-title:first-child {
+  margin-top: 0.6rem;
+}
+
+/* Selected Publications on a person's profile page */
+.person-pubs {
+  margin-top: 1.6rem;
+}
+
+.person-pubs-title {
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  font-weight: 700;
+}
+
+.person-pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.person-pub-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.person-pub-link {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-link);
+}
+
+.person-pub-venue {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
 }
 
 .students-header {

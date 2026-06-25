@@ -5,7 +5,7 @@ venue: "European Conference on Computer Vision"
 venue_short: "ECCV"
 year: 2026
 date: 2026-09-08
-pdf: ""
+pdf: "/uploads/reshift-eccv26.pdf"
 doi: ""
 arxiv: ""
 code: ""

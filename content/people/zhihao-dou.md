@@ -13,5 +13,8 @@ research_interests: "LLM reasoning, reinforcement learning for language models"
 bio: >
   Ph.D. student in the reSAID Lab. Co-author of the ICML 2026 paper on high-level
   planning guidance reinforcement learning for LLM reasoning.
+publications:
+  - "plan-then-action-icml26"
+  - "reshift-eccv26"
 date: 2024-08-15
 ---

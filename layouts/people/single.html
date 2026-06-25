@@ -48,6 +48,23 @@
     <div class="rich-content detail-content">{{ .Content }}</div>
     {{ end }}
 
+    {{ with .Params.publications }}
+    <div class="person-pubs">
+      <h2 class="person-pubs-title">Selected Publications</h2>
+      <ul class="person-pub-list">
+        {{ range . }}
+          {{ $pub := site.GetPage (printf "/publications/%s" .) }}
+          {{ with $pub }}
+          <li class="person-pub-item">
+            <a href="{{ .RelPermalink }}" class="person-pub-link">{{ .Title }}</a>
+            <span class="person-pub-venue">{{ partial "pub-venue.html" . }}</span>
+          </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
     <p class="detail-back">
       <a href="{{ "/people/" | relURL }}" class="back-link">&larr; Back to People</a>
     </p>

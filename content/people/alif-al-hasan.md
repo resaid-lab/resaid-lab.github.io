@@ -11,5 +11,7 @@ scholar: ""
 photo: ""
 research_interests: "Responsible AI engineering, software engineering for AI"
 bio: "Ph.D. student in the reSAID Lab at Case Western Reserve University."
+publications:
+  - "agentic-code-safety-preprint-2026"
 date: 2024-08-15
 ---

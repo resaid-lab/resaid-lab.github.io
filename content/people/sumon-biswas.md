@@ -20,6 +20,12 @@ bio: >
   Carnegie Mellon University. His research operates at the intersection of Software
   Engineering and AI, with an emphasis on engineering responsible AI systems using
   both formal and empirical approaches.
+publications:
+  - "agentic-code-safety-preprint-2026"
+  - "reshift-eccv26"
+  - "plan-then-action-icml26"
+  - "fairsense-icse25"
+  - "fairify-icse23"
 date: 2024-08-01
 ---
 
