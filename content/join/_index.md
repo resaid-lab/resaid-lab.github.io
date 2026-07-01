@@ -12,7 +12,7 @@ GPU computing resources (five HGX servers with 40 NVIDIA H200 GPUs and several A
 
 ## Open Positions
 
-- **Ph.D. students** — Fall 2026 and Fall 2027 (LLMs, coding agents, AI fairness and safety)
+- **Ph.D. students** — Ongoing (LLMs, coding agents, AI fairness and safety)
 - **M.S. students** — Research thesis opportunities (ongoing)
 - **Undergraduate researchers** — Ongoing (minimum 8–10 hrs/week)
 

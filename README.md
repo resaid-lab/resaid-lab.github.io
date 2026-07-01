@@ -78,8 +78,7 @@ The site auto-reloads when you save changes.
    ```
 2. Edit the front matter — fill in `title`, `authors`, `venue`, `year`, `doi`, `pdf`,
    `code`, etc.
-3. Bold your name in the authors field using `**Sumon Biswas**`
-4. Add the BibTeX entry in the `bibtex` field
+3. Add the BibTeX entry in the `bibtex` field
 
 ### Add a Project
 
@@ -97,14 +96,6 @@ The site auto-reloads when you save changes.
    hugo new --kind news news/paper-accepted-venue-year.md
    ```
 2. Set the `date`, `description`, and optionally a `link`
-
-### Add a Talk
-
-1. Create a new file in `content/talks/`:
-   ```bash
-   hugo new --kind talks talks/talk-venue-year.md
-   ```
-2. Fill in `title`, `speaker`, `venue`, `date`, `location`, `slides`, `video`, `paper`
 
 ---
 
@@ -131,13 +122,13 @@ All content updates go through pull requests. **Do not push directly to `main`.*
 4. **Commit and push**:
    ```bash
    git add content/publications/my-paper.md
-   git commit -m "Add ICSE 2026 paper on fairness verification"
+   git commit -m "Add ICSE 2026 paper"
    git push origin add-paper-icse-2026
    ```
 
 5. **Open a pull request** on GitHub. Use the PR template to describe your change.
 
-6. **Request a review** from a lab admin or Dr. Biswas.
+6. **Request a review** from a lab admin.
 
 7. **Merge** after approval. The site deploys automatically.
 
@@ -165,17 +156,17 @@ resaid-lab.github.io/
 │   ├── people.md
 │   ├── publications.md
 │   ├── projects.md
-│   ├── news.md
-│   └── talks.md
+│   └── news.md
+├── assets/                       # Processed by Hugo Pipes
+│   ├── css/                      # Stylesheets (main.css, fonts.css)
+│   └── js/main.js                # Site JavaScript
 ├── content/
 │   ├── _index.md                 # Home page
 │   ├── people/                   # Person profiles
 │   ├── publications/             # Paper entries
 │   ├── projects/                 # Project descriptions
 │   ├── news/                     # News items
-│   ├── talks/                    # Talk records
 │   ├── research/_index.md        # Research themes page
-│   ├── teaching/_index.md        # Teaching page
 │   └── join/_index.md            # Join Us page
 ├── data/
 │   └── themes.yaml               # Research theme descriptions
@@ -186,13 +177,10 @@ resaid-lab.github.io/
 │   ├── publications/
 │   ├── projects/
 │   ├── news/
-│   ├── talks/
-│   ├── teaching/
 │   ├── join/
 │   ├── research/
 │   └── index.html                # Home page layout
 ├── static/
-│   ├── css/main.css              # Main stylesheet
 │   └── images/                   # Lab photos, avatars
 ├── hugo.yaml                     # Hugo configuration
 └── README.md
@@ -206,33 +194,10 @@ The site deploys automatically to GitHub Pages when changes are merged to `main`
 
 - **Trigger:** Push to `main`
 - **Build:** GitHub Actions runs `hugo --minify`
-- **Deploy:** Output uploaded to `gh-pages` environment
+- **Deploy:** Output uploaded to the `github-pages` environment
 - **URL:** [https://resaid-lab.github.io](https://resaid-lab.github.io)
 
 Pull request builds run `hugo` for validation but do **not** deploy.
-
----
-
-## GitHub Repository Settings
-
-Recommended settings for the `resaid-lab/resaid-lab.github.io` repository:
-
-- **Visibility:** Public
-- **Default branch:** `main`
-- **Pages source:** GitHub Actions
-- **Branch protection (main):**
-  - Require pull request before merging
-  - Require at least 1 approval
-  - Dismiss stale reviews on new commits
-
-### Team permissions
-
-| Team              | Role    | Notes                                   |
-|-------------------|---------|-----------------------------------------|
-| `website-admins`  | Admin   | PI and designated website maintainers   |
-| `phd-students`    | Write   | Can open PRs and push branches          |
-| `ms-students`     | Write   | Can open PRs (if contributing content)  |
-| `undergrads`      | Read    | Can view and fork; PR via fork          |
 
 ---
 

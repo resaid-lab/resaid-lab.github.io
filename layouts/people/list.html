@@ -43,7 +43,6 @@
             <strong>Research interests:</strong> {{ . }}
           </p>
           {{ end }}
-          {{ with .Params.bio }}<p class="pi-bio">{{ . }}</p>{{ end }}
         </div>
       </div>
       {{ end }}
@@ -56,7 +55,7 @@
     <div class="people-group">
       <h2 class="people-group-title">Ph.D. Students</h2>
       <div class="people-grid">
-        {{ range $phd }}{{ partial "person-card.html" . }}{{ end }}
+        {{ range $phd.ByTitle }}{{ partial "person-card.html" . }}{{ end }}
       </div>
     </div>
     {{ end }}
@@ -67,7 +66,7 @@
     <div class="people-group">
       <h2 class="people-group-title">M.S. Students</h2>
       <div class="people-grid">
-        {{ range $ms }}{{ partial "person-card.html" . }}{{ end }}
+        {{ range $ms.ByTitle }}{{ partial "person-card.html" . }}{{ end }}
       </div>
     </div>
     {{ end }}
@@ -78,7 +77,7 @@
     <div class="people-group">
       <h2 class="people-group-title">Undergraduate Researchers</h2>
       <div class="people-grid">
-        {{ range $ug }}{{ partial "person-card.html" . }}{{ end }}
+        {{ range $ug.ByTitle }}{{ partial "person-card.html" . }}{{ end }}
       </div>
     </div>
     {{ end }}
@@ -89,7 +88,7 @@
     <div class="people-group">
       <h2 class="people-group-title">K-12 Interns</h2>
       <div class="people-grid">
-        {{ range $k12 }}{{ partial "person-card.html" . }}{{ end }}
+        {{ range $k12.ByTitle }}{{ partial "person-card.html" . }}{{ end }}
       </div>
     </div>
     {{ end }}
@@ -100,7 +99,18 @@
     <div class="people-group">
       <h2 class="people-group-title">Collaborators</h2>
       <div class="people-grid">
-        {{ range $collab }}{{ partial "person-card.html" . }}{{ end }}
+        {{ range $collab.ByTitle }}{{ partial "person-card.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{/* Past Students */}}
+    {{ $past := where .Pages ".Params.role" "past" }}
+    {{ if $past }}
+    <div class="people-group">
+      <h2 class="people-group-title">Past Students</h2>
+      <div class="people-grid">
+        {{ range $past.ByTitle }}{{ partial "person-card.html" . }}{{ end }}
       </div>
     </div>
     {{ end }}
@@ -111,7 +121,7 @@
     <div class="people-group">
       <h2 class="people-group-title">Alumni</h2>
       <div class="people-grid">
-        {{ range $alumni }}{{ partial "person-card.html" . }}{{ end }}
+        {{ range $alumni.ByTitle }}{{ partial "person-card.html" . }}{{ end }}
       </div>
     </div>
     {{ end }}

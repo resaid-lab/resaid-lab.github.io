@@ -1,9 +1,11 @@
 - id: responsible-ai-engineering
   title: "Responsible AI Engineering"
   description: >
-    Designing, building, and evaluating AI systems that are accountable, transparent,
-    and aligned with human values. We develop methods for verifying, testing, and
-    auditing AI software throughout the engineering lifecycle.
+    Designing, building, and evaluating AI systems that are fair, safe, reliable,
+    accountable, and aligned with human values. We develop methods for verifying,
+    testing, and auditing AI software throughout the engineering lifecycle—spanning
+    long-term fairness under feedback loops, compositional fairness in pipelines,
+    and trustworthy system design.
 
 - id: llms-coding-agents
   title: "LLMs and Coding Agents"
@@ -12,19 +14,13 @@
     LLM reasoning capabilities, coding agent reliability, bias in LLM outputs, and
     the technical debt that arises when LLMs are used in software development.
 
-- id: ai-technical-debt
-  title: "AI-Accelerated Technical Debt"
+- id: formal-verification-program-analysis
+  title: "Formal Verification and Program Analysis"
   description: >
-    Understanding, measuring, and managing technical debt in AI and ML software
-    systems. We study self-admitted technical debt in ML pipelines and how AI coding
-    tools such as GitHub Copilot introduce or help resolve technical debt.
-
-- id: fairness-safety-reliability
-  title: "Fairness, Safety, and Reliability"
-  description: >
-    Formal verification and empirical analysis of fairness, safety, and reliability
-    properties in ML-enabled systems. Topics include long-term fairness under feedback
-    loops, compositional fairness in pipelines, and safe ML system design.
+    Applying formal methods, static and dynamic program analysis, and verification
+    techniques to reason about correctness, safety, and fairness properties of
+    software and ML-enabled systems. We build tools that provide provable guarantees
+    and detect defects in AI software.
 
 - id: software-engineering-for-ai
   title: "Software Engineering for AI"
@@ -32,10 +28,3 @@
     Applying software engineering principles—architecture, testing, maintenance,
     and quality—to AI and ML systems. We study data science pipelines, ML system
     architecture, and engineering practices for AI-enabled software.
-
-- id: responsible-ai-design
-  title: "Responsible AI Design"
-  description: >
-    Architectural and design-level approaches for embedding responsibility into
-    AI systems. We explore fair AutoML, causal reasoning for fairness in ML
-    pipelines, and compositional approaches to building trustworthy AI systems.

@@ -1,6 +1,6 @@
 ---
 title: "Ruksaar Shaik"
-role: "ms"
+role: "past"
 role_label: "M.S. Student"
 position: "M.S. Student"
 affiliation: "Department of Computer and Data Sciences, Case Western Reserve University"

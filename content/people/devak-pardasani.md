@@ -1,6 +1,6 @@
 ---
-title: "Zelan Eroz Espanto"
-role: "past"
+title: "Devak Pardasani"
+role: "undergrad"
 role_label: "Undergraduate Researcher"
 position: "Undergraduate Research Assistant"
 affiliation: "Case Western Reserve University"
