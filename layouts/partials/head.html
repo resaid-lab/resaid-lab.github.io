@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#18385c">
+<meta name="theme-color" content="#17365C">
 
 {{- /* Per-page description: prefer page-specific content, fall back to the site description.
        chomp strips the trailing newline left by YAML folded scalars (`>`). */ -}}
@@ -60,9 +60,10 @@
 <meta name="citation_pdf_url" content="{{ . | absURL }}">{{ end }}
 {{- end -}}
 
-<!-- Self-hosted fonts; preload the two above-the-fold faces (body + heading) -->
+<!-- Self-hosted fonts; preload the above-the-fold faces (body + heading + brand wordmark) -->
 <link rel="preload" href="{{ "fonts/source-sans-3-400-normal-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ "fonts/lora-600-normal-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/ibm-plex-mono-600-normal-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 {{ $fonts := resources.Get "css/fonts.css" }}
 {{ $main := resources.Get "css/main.css" }}
 {{ $css := slice $fonts $main | resources.Concat "css/bundle.css" | minify | fingerprint }}

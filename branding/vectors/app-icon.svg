@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="reSAID Lab app icon">
+  <title>reSAID Lab — app / Slack icon</title>
+  <rect width="512" height="512" rx="112" fill="#17365C"></rect>
+  <g transform="translate(102.4,102.4) scale(6.4)">
+    <g fill="none" stroke="#EAF0F7" stroke-width="4.5">
+      <polyline points="17.5,9.75 38.25,9.75 38.25,29.5"></polyline>
+      <polyline points="30.5,38.25 9.75,38.25 9.75,18.5"></polyline>
+    </g>
+    <rect x="34.5" y="32.75" width="7.5" height="7.5" fill="#D9995F"></rect>
+    <rect x="6" y="7.75" width="7.5" height="7.5" fill="#D9995F"></rect>
+  </g>
+</svg>

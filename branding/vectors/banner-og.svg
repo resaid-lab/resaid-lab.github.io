@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="reSAID Lab — Responsible Software and AI Design Lab">
+  <title>reSAID Lab — social / Open Graph / news card (1200×630)</title>
+  <defs></defs>
+  <rect width="1200" height="630" fill="#17365C"></rect>
+  <rect width="1200" height="630" fill="url(#og-fade)"></rect>
+  <defs>
+    <radialGradient id="og-fade" cx="18%" cy="30%" r="90%">
+      <stop offset="0" stop-color="#1D3F69"></stop>
+      <stop offset="1" stop-color="#122C4B"></stop>
+    </radialGradient>
+    <clipPath id="og-clip"><rect width="1200" height="630"></rect></clipPath>
+  </defs>
+  <g clip-path="url(#og-clip)">
+    <g transform="translate(872,111) scale(8.5)" opacity="0.06">
+      <g fill="none" stroke="#EAF0F7" stroke-width="4.5">
+        <polyline points="17.5,9.75 38.25,9.75 38.25,29.5"></polyline>
+        <polyline points="30.5,38.25 9.75,38.25 9.75,18.5"></polyline>
+      </g>
+      <rect x="34.5" y="32.75" width="7.5" height="7.5" fill="#EAF0F7"></rect>
+      <rect x="6" y="7.75" width="7.5" height="7.5" fill="#EAF0F7"></rect>
+    </g>
+  </g>
+  <g transform="translate(120,214) scale(2.55)">
+    <g fill="none" stroke="#EAF0F7" stroke-width="4.5">
+      <polyline points="17.5,9.75 38.25,9.75 38.25,29.5"></polyline>
+      <polyline points="30.5,38.25 9.75,38.25 9.75,18.5"></polyline>
+    </g>
+    <rect x="34.5" y="32.75" width="7.5" height="7.5" fill="#D9995F"></rect>
+    <rect x="6" y="7.75" width="7.5" height="7.5" fill="#D9995F"></rect>
+  </g>
+  <text class="kick" x="271" y="238">CASE WESTERN RESERVE UNIVERSITY</text>
+  <text class="wm" x="269" y="308" fill="#EAF0F7"><tspan class="re">re</tspan>S<tspan class="ai">AI</tspan>D</text>
+  <text class="tag" x="271" y="348">Responsible Software and AI Design Lab</text>
+  <line x1="120" y1="540" x2="1080" y2="540" stroke="#2B4767" stroke-width="1.5"></line>
+  <text class="foot" x="120" y="576">Department of Computer &amp; Data Sciences · Case School of Engineering</text>
+  <text class="foot" x="120" y="600" fill="#557093">resaid-lab.github.io</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 150" width="560" height="150" role="img" aria-label="reSAID Lab — Responsible Software and AI Design Lab">
+  <title>reSAID Lab — primary logo</title>
+  <defs></defs>
+  <g transform="translate(36,29.4) scale(1.9)">
+    <g fill="none" stroke="#17365C" stroke-width="4.5">
+      <polyline points="17.5,9.75 38.25,9.75 38.25,29.5"></polyline>
+      <polyline points="30.5,38.25 9.75,38.25 9.75,18.5"></polyline>
+    </g>
+    <rect x="34.5" y="32.75" width="7.5" height="7.5" fill="#A8683B"></rect>
+    <rect x="6" y="7.75" width="7.5" height="7.5" fill="#A8683B"></rect>
+  </g>
+  <text class="wm" x="154" y="78" fill="#17365C"><tspan class="re">re</tspan>S<tspan class="ai">AI</tspan>D</text>
+  <text class="tag" x="156" y="100">RESPONSIBLE SOFTWARE AND AI DESIGN LAB</text>
+</svg>

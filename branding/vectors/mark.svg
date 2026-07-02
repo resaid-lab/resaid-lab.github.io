@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="reSAID Lab mark">
+  <title>reSAID Lab — mark (2-color)</title>
+  <g fill="none" stroke="#17365C" stroke-width="4.5">
+    <polyline points="17.5,9.75 38.25,9.75 38.25,29.5"></polyline>
+    <polyline points="30.5,38.25 9.75,38.25 9.75,18.5"></polyline>
+  </g>
+  <rect x="34.5" y="32.75" width="7.5" height="7.5" fill="#A8683B"></rect>
+  <rect x="6" y="7.75" width="7.5" height="7.5" fill="#A8683B"></rect>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="reSAID Lab title slide">
+  <title>reSAID Lab — presentation title slide (1920×1080)</title>
+  <defs></defs>
+  <rect width="1920" height="1080" fill="#F5F1EA"></rect>
+  <g transform="translate(840,300) scale(5)">
+    <g fill="none" stroke="#17365C" stroke-width="4.5">
+      <polyline points="17.5,9.75 38.25,9.75 38.25,29.5"></polyline>
+      <polyline points="30.5,38.25 9.75,38.25 9.75,18.5"></polyline>
+    </g>
+    <rect x="34.5" y="32.75" width="7.5" height="7.5" fill="#A8683B"></rect>
+    <rect x="6" y="7.75" width="7.5" height="7.5" fill="#A8683B"></rect>
+  </g>
+  <text class="wm" x="960" y="690" text-anchor="middle" fill="#17365C"><tspan class="re">re</tspan>S<tspan class="ai">AI</tspan>D</text>
+  <text class="tag" x="960" y="760" text-anchor="middle">RESPONSIBLE SOFTWARE AND AI DESIGN LAB</text>
+  <rect x="930" y="800" width="60" height="4" fill="#A8683B"></rect>
+  <text class="foot" x="960" y="1000" text-anchor="middle">Case Western Reserve University · Department of Computer &amp; Data Sciences</text>
+</svg>

@@ -1,14 +1,18 @@
 /* reSAID Lab - formal academic stylesheet */
 
 :root {
-  --color-primary: #18385c;
+  /* Brand palette (see /branding/README.txt): navy #17365C, copper #A8683B.
+     --color-ai is a darkened copper (same hue) so small bold text keeps AA contrast
+     on white; the mark and translucent washes carry the true brand copper. */
+  --color-primary: #17365C;
   --color-primary-dark: #102842;
-  --color-ai: #9a4f14;
+  --color-ai: #8a5227;
   --color-ai-dark: #71380c;
-  --color-ai-soft: rgba(154, 79, 20, 0.09);
-  --color-primary-soft: rgba(24, 56, 92, 0.075);
-  --color-accent: #9a4f14;
+  --color-ai-soft: rgba(168, 104, 59, 0.09);
+  --color-primary-soft: rgba(23, 54, 92, 0.075);
+  --color-accent: #8a5227;
   --color-accent-hover: #71380c;
+  --color-brand-slate: #5A6E85;
   --color-text: #1c1e21;
   --color-text-muted: #43484e;
   --color-text-light: #6b7280;
@@ -26,8 +30,8 @@
   /* ── Glass design system (Neutral Systems Glass) ─────────── */
   /* Ambient field the frosted surfaces refract against */
   --ambient-base: #eef1f4;
-  --ambient-navy-bloom: rgba(24, 56, 92, 0.07);
-  --ambient-rust-bloom: rgba(154, 79, 20, 0.05);
+  --ambient-navy-bloom: rgba(23, 54, 92, 0.07);
+  --ambient-rust-bloom: rgba(168, 104, 59, 0.05);
   /* Shared backdrop-filter budgets */
   --glass-blur: saturate(118%) blur(9px);
   --glass-blur-chip: saturate(115%) blur(6px);
@@ -43,11 +47,11 @@
   /* Edges, highlights, shadows */
   --glass-highlight: rgba(255, 255, 255, 0.75);
   --glass-catch: inset 0 1px 0 rgba(255, 255, 255, 0.62);
-  --glass-hairline: rgba(24, 56, 92, 0.10);
-  --glass-hairline-strong: rgba(24, 56, 92, 0.22);
-  --glass-edge-rust: rgba(154, 79, 20, 0.16);
-  --glass-edge-rust-hover: rgba(154, 79, 20, 0.30);
-  --glass-focus-ring: 0 0 0 3px rgba(154, 79, 20, 0.16);
+  --glass-hairline: rgba(23, 54, 92, 0.10);
+  --glass-hairline-strong: rgba(23, 54, 92, 0.22);
+  --glass-edge-rust: rgba(168, 104, 59, 0.16);
+  --glass-edge-rust-hover: rgba(168, 104, 59, 0.30);
+  --glass-focus-ring: 0 0 0 3px rgba(168, 104, 59, 0.16);
   --glass-shadow: 0 6px 18px rgba(16, 40, 66, 0.06), 0 1px 2px rgba(16, 40, 66, 0.05);
   --glass-shadow-lift: 0 10px 26px rgba(16, 40, 66, 0.09), 0 1px 2px rgba(16, 40, 66, 0.06);
   --glass-shadow-modal: 0 24px 60px rgba(16, 40, 66, 0.22), 0 2px 6px rgba(16, 40, 66, 0.12);
@@ -55,6 +59,8 @@
   --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  /* Brand wordmark only — IBM Plex Mono per /branding/README.txt */
+  --font-brand: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
 
   --container-max: 960px;
   --container-padding: 1.25rem;
@@ -84,8 +90,8 @@ body {
   /* Fixed ambient field so frosted surfaces have something to refract against */
   background-color: var(--ambient-base);
   background-image:
-    radial-gradient(120% 90% at 12% 0%, var(--ambient-navy-bloom) 0%, rgba(24, 56, 92, 0) 42%),
-    radial-gradient(110% 95% at 100% 100%, var(--ambient-rust-bloom) 0%, rgba(154, 79, 20, 0) 46%),
+    radial-gradient(120% 90% at 12% 0%, var(--ambient-navy-bloom) 0%, rgba(23, 54, 92, 0) 42%),
+    radial-gradient(110% 95% at 100% 100%, var(--ambient-rust-bloom) 0%, rgba(168, 104, 59, 0) 46%),
     linear-gradient(180deg, #f3f5f8 0%, #eef1f4 38%, #e9edf1 100%);
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -349,18 +355,18 @@ pre code {
 }
 
 .brand-re {
-  color: var(--color-text-light);
+  color: var(--color-brand-slate);
   font-weight: 400;
 }
 
 .brand-said {
   color: var(--color-primary);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .brand-ai {
   color: var(--color-ai);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .icon {
@@ -454,9 +460,9 @@ pre code {
   gap: 0.5em;
   flex-shrink: 0;
   color: var(--color-primary);
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-weight: 700;
+  font-family: var(--font-brand);
+  font-size: 0.95rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -569,7 +575,9 @@ pre code {
 .hero h1 {
   margin-bottom: 0.02rem;
   color: var(--color-primary);
-  font-size: 2.16rem;
+  font-family: var(--font-brand);
+  font-size: 2.02rem;
+  font-weight: 600;
   line-height: 1.12;
 }
 
@@ -832,7 +840,7 @@ pre code {
   padding: 0.55rem 0.62rem;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.84)),
-    linear-gradient(90deg, rgba(154, 79, 20, 0.04), rgba(24, 56, 92, 0.02));
+    linear-gradient(90deg, rgba(168, 104, 59, 0.04), rgba(23, 54, 92, 0.02));
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-hairline);
@@ -1001,7 +1009,7 @@ pre code {
 .pub-link-icon:hover,
 .pub-link-icon:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(24, 56, 92, 0.28);
+  border-color: rgba(23, 54, 92, 0.28);
   background: #fff;
 }
 
@@ -1392,7 +1400,7 @@ body.cite-modal-open {
   padding: 0.58rem 0.66rem 0.62rem;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.91), rgba(255, 255, 255, 0.83)),
-    linear-gradient(90deg, rgba(154, 79, 20, 0.035), rgba(24, 56, 92, 0.02));
+    linear-gradient(90deg, rgba(168, 104, 59, 0.035), rgba(23, 54, 92, 0.02));
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-hairline);
@@ -2033,9 +2041,9 @@ body.cite-modal-open {
   display: block;
   margin-bottom: 0.2rem;
   color: var(--color-primary);
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-weight: 700;
+  font-family: var(--font-brand);
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .footer-brand p {
