@@ -7,7 +7,7 @@ year: 2026
 date: 2026-09-08
 pdf: "/uploads/reshift-eccv26.pdf"
 doi: ""
-arxiv: ""
+arxiv: "https://arxiv.org/abs/2607.00361"
 code: ""
 data: ""
 artifact: ""
