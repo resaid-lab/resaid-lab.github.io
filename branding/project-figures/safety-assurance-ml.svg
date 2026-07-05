@@ -1,0 +1,101 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="14" cy="14" r="1.6" fill="#17365C" opacity="0.04"/>
+    </pattern>
+    <marker id="arrNavy" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#17365C"/>
+    </marker>
+    <marker id="arrSlate" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#5A6E85"/>
+    </marker>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="630" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#dotgrid)"/>
+
+  <!-- input space region -->
+  <rect x="95" y="125" width="530" height="395" rx="80"
+        fill="#9FB3CB" fill-opacity="0.08"
+        stroke="#5A6E85" stroke-width="2.5" stroke-opacity="0.55"/>
+
+  <!-- safe region fill (right of precondition curve) -->
+  <path d="M 330 125
+           C 275 210, 375 290, 330 380
+           C 305 430, 275 470, 272 520
+           L 545 520
+           A 80 80 0 0 0 625 440
+           L 625 205
+           A 80 80 0 0 0 545 125
+           Z"
+        fill="#A8683B" fill-opacity="0.07" stroke="none"/>
+
+  <!-- precondition boundary curve -->
+  <path d="M 330 125
+           C 275 210, 375 290, 330 380
+           C 305 430, 275 470, 272 520"
+        fill="none" stroke="#A8683B" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- labels -->
+  <text x="150" y="182" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic"
+        fill="#5A6E85">input space</text>
+  <text x="344" y="112" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic"
+        fill="#8a5227">precondition φ</text>
+  <text x="505" y="482" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic"
+        fill="#8a5227" text-anchor="middle">safe region</text>
+  <text x="915" y="447" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic"
+        fill="#17365C" text-anchor="middle">model</text>
+
+  <!-- safe input dots -->
+  <circle cx="400" cy="230" r="9" fill="#17365C"/>
+  <circle cx="470" cy="340" r="9" fill="#17365C"/>
+  <circle cx="380" cy="420" r="9" fill="#17365C"/>
+
+  <!-- arrows: safe dots to model -->
+  <path d="M 414 229 C 550 212, 680 248, 772 283" fill="none" stroke="#17365C" stroke-width="2.5" marker-end="url(#arrNavy)"/>
+  <path d="M 484 340 C 580 342, 680 332, 772 318" fill="none" stroke="#17365C" stroke-width="2.5" marker-end="url(#arrNavy)"/>
+  <path d="M 393 424 C 560 448, 690 388, 772 350" fill="none" stroke="#17365C" stroke-width="2.5" marker-end="url(#arrNavy)"/>
+
+  <!-- unsafe dot, blocked at boundary -->
+  <circle cx="170" cy="300" r="9" fill="#5A6E85"/>
+  <circle cx="205" cy="445" r="8" fill="#5A6E85" fill-opacity="0.45"/>
+  <path d="M 184 300 C 230 299, 270 300, 298 303" fill="none" stroke="#5A6E85" stroke-width="2.5" marker-end="url(#arrSlate)"/>
+  <path d="M 322 322 C 314 340, 296 352, 274 358" fill="none" stroke="#5A6E85" stroke-width="2.5"
+        stroke-dasharray="6 6" marker-end="url(#arrSlate)"/>
+  <!-- red cross at boundary -->
+  <path d="M 311 292 L 341 322 M 341 292 L 311 322" fill="none" stroke="#C94A3F" stroke-width="5" stroke-linecap="round"/>
+  <text x="245" y="276" font-family="Helvetica, Arial, sans-serif" font-size="19" font-style="italic"
+        fill="#C94A3F" text-anchor="middle">unsafe input</text>
+
+  <!-- model block -->
+  <rect x="790" y="225" width="250" height="180" rx="16"
+        fill="#17365C" fill-opacity="0.03"
+        stroke="#17365C" stroke-width="3"/>
+  <!-- tiny network inside -->
+  <g stroke="#9FB3CB" stroke-width="1.4" opacity="0.7">
+    <path d="M 840 275 L 915 255 M 840 275 L 915 295 M 840 275 L 915 335"/>
+    <path d="M 840 315 L 915 255 M 840 315 L 915 295 M 840 315 L 915 335 M 840 315 L 915 375"/>
+    <path d="M 840 355 L 915 295 M 840 355 L 915 335 M 840 355 L 915 375"/>
+    <path d="M 915 255 L 990 290 M 915 295 L 990 290 M 915 335 L 990 290"/>
+    <path d="M 915 295 L 990 340 M 915 335 L 990 340 M 915 375 L 990 340"/>
+  </g>
+  <g fill="#FFFFFF" stroke="#17365C" stroke-width="2">
+    <circle cx="840" cy="275" r="7"/>
+    <circle cx="840" cy="315" r="7"/>
+    <circle cx="840" cy="355" r="7"/>
+    <circle cx="915" cy="255" r="7"/>
+    <circle cx="915" cy="295" r="7"/>
+    <circle cx="915" cy="335" r="7"/>
+    <circle cx="915" cy="375" r="7"/>
+    <circle cx="990" cy="290" r="7"/>
+    <circle cx="990" cy="340" r="7"/>
+  </g>
+
+  <!-- output arrow and check -->
+  <path d="M 1040 315 L 1072 315" fill="none" stroke="#17365C" stroke-width="2.5" marker-end="url(#arrNavy)"/>
+  <path d="M 1088 317 L 1104 333 L 1132 297" fill="none" stroke="#A8683B" stroke-width="6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1110" y="366" font-family="Helvetica, Arial, sans-serif" font-size="20" font-style="italic"
+        fill="#8a5227" text-anchor="middle">safe prediction</text>
+</svg>

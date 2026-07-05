@@ -1,0 +1,87 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#17365C" opacity="0.04"/>
+    </pattern>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#17365C"/>
+    </marker>
+    <!-- one repo card: 94 x 64 -->
+    <g id="card">
+      <rect x="0" y="0" width="94" height="64" rx="8" fill="#FFFFFF" stroke="#5A6E85" stroke-width="2"/>
+      <!-- git-branch glyph -->
+      <line x1="28" y1="18" x2="28" y2="46" stroke="#5A6E85" stroke-width="2"/>
+      <path d="M28,40 C28,28 32,26 40,26" fill="none" stroke="#5A6E85" stroke-width="2"/>
+      <circle cx="28" cy="18" r="4.5" fill="#FFFFFF" stroke="#5A6E85" stroke-width="2"/>
+      <circle cx="28" cy="46" r="4.5" fill="#FFFFFF" stroke="#5A6E85" stroke-width="2"/>
+      <circle cx="44" cy="26" r="4.5" fill="#FFFFFF" stroke="#5A6E85" stroke-width="2"/>
+      <!-- code lines -->
+      <line x1="58" y1="26" x2="80" y2="26" stroke="#9FB3CB" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="58" y1="38" x2="74" y2="38" stroke="#9FB3CB" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="630" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- ================= left: 3x3 repo grid ================= -->
+  <text x="243" y="148" font-family="Helvetica, Arial, sans-serif" font-size="20" font-style="italic" fill="#5A6E85" text-anchor="middle">github projects</text>
+  <use href="#card" x="85"  y="172" opacity="1"/>
+  <use href="#card" x="196" y="172" opacity="0.5"/>
+  <use href="#card" x="307" y="172" opacity="0.85"/>
+  <use href="#card" x="85"  y="253" opacity="0.55"/>
+  <use href="#card" x="196" y="253" opacity="1"/>
+  <use href="#card" x="307" y="253" opacity="0.8"/>
+  <use href="#card" x="85"  y="334" opacity="0.85"/>
+  <use href="#card" x="196" y="334" opacity="0.5"/>
+  <use href="#card" x="307" y="334" opacity="1"/>
+
+  <text x="243" y="447" font-family="Helvetica, Arial, sans-serif" font-size="22" font-style="italic" fill="#8a5227" text-anchor="middle">5M repos</text>
+
+  <!-- ================= funnel arrows ================= -->
+  <g stroke="#17365C" stroke-width="2.5" fill="none">
+    <path d="M411,204 C472,204 515,250 549,281" marker-end="url(#ah)"/>
+    <path d="M411,285 C458,289 500,297 543,303" marker-end="url(#ah)"/>
+    <path d="M411,366 C472,366 515,358 549,329" marker-end="url(#ah)"/>
+  </g>
+
+  <!-- ================= center: AST tree ================= -->
+  <!-- edges -->
+  <g stroke="#17365C" stroke-width="2.5" fill="none">
+    <path d="M580,305 C624,305 624,220 668,220"/>
+    <path d="M580,305 C624,305 624,390 668,390"/>
+    <path d="M668,220 C710,220 710,186 752,186"/>
+    <path d="M668,220 C710,220 710,252 752,252"/>
+    <path d="M668,390 C710,390 710,358 752,358"/>
+    <path d="M668,390 C710,390 710,424 752,424"/>
+  </g>
+  <!-- highlighted path root -> middle child -> leaf -->
+  <line x1="580" y1="305" x2="752" y2="305" stroke="#A8683B" stroke-width="3"/>
+  <!-- nodes -->
+  <circle cx="580" cy="305" r="13" fill="#A8683B" stroke="none"/>
+  <circle cx="668" cy="220" r="10" fill="#FFFFFF" stroke="#17365C" stroke-width="2.5"/>
+  <circle cx="668" cy="305" r="10" fill="#FFFFFF" stroke="#A8683B" stroke-width="3"/>
+  <circle cx="668" cy="390" r="10" fill="#FFFFFF" stroke="#17365C" stroke-width="2.5"/>
+  <circle cx="752" cy="186" r="7" fill="#FFFFFF" stroke="#17365C" stroke-width="2"/>
+  <circle cx="752" cy="252" r="7" fill="#FFFFFF" stroke="#5A6E85" stroke-width="2"/>
+  <circle cx="752" cy="305" r="7" fill="#A8683B" stroke="none"/>
+  <circle cx="752" cy="358" r="7" fill="#FFFFFF" stroke="#5A6E85" stroke-width="2"/>
+  <circle cx="752" cy="424" r="7" fill="#FFFFFF" stroke="#17365C" stroke-width="2"/>
+
+  <text x="666" y="474" font-family="Helvetica, Arial, sans-serif" font-size="22" font-style="italic" fill="#5A6E85" text-anchor="middle">static analysis</text>
+  <text x="580" y="271" font-family="Helvetica, Arial, sans-serif" font-size="20" font-style="italic" fill="#17365C" text-anchor="middle">ASTs</text>
+  <line x1="580" y1="277" x2="580" y2="289" stroke="#17365C" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- ================= arrow to insights ================= -->
+  <path d="M770,305 L868,305" stroke="#17365C" stroke-width="2.5" fill="none" marker-end="url(#ah)"/>
+
+  <!-- ================= right: insights panel ================= -->
+  <rect x="892" y="227" width="214" height="156" rx="10" fill="#FFFFFF" stroke="#17365C" stroke-width="2.5"/>
+  <rect x="938" y="315" width="34" height="48" rx="2" fill="#9FB3CB"/>
+  <rect x="982" y="275" width="34" height="88" rx="2" fill="#A8683B"/>
+  <rect x="1026" y="299" width="34" height="64" rx="2" fill="#9FB3CB"/>
+  <line x1="918" y1="363" x2="1080" y2="363" stroke="#5A6E85" stroke-width="2"/>
+
+  <text x="999" y="425" font-family="Helvetica, Arial, sans-serif" font-size="22" font-style="italic" fill="#5A6E85" text-anchor="middle">insights</text>
+</svg>

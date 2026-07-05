@@ -1,0 +1,115 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="17" cy="17" r="1.4" fill="#17365C" opacity="0.04"/>
+    </pattern>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#A8683B" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#A8683B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="630" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- faint depth-level guides -->
+  <g stroke="#17365C" stroke-opacity="0.07" stroke-width="1" stroke-dasharray="2 7">
+    <line x1="130" y1="80" x2="130" y2="550"/>
+    <line x1="350" y1="80" x2="350" y2="550"/>
+    <line x1="580" y1="80" x2="580" y2="550"/>
+    <line x1="810" y1="80" x2="810" y2="550"/>
+    <line x1="1040" y1="80" x2="1040" y2="550"/>
+  </g>
+
+  <!-- pruned / dead-end edges -->
+  <g fill="none" stroke="#5A6E85" stroke-width="2.5">
+    <path d="M130,315 C230,315 250,150 350,150" stroke-opacity="0.45"/>
+    <path d="M130,315 C230,315 250,460 350,460" stroke-opacity="0.45"/>
+    <path d="M350,150 C450,150 480,95 580,95"   stroke-opacity="0.42"/>
+    <path d="M350,150 C450,150 480,190 580,190" stroke-opacity="0.43"/>
+    <path d="M350,300 C450,300 480,355 580,355" stroke-opacity="0.45"/>
+    <path d="M350,460 C450,460 480,430 580,430" stroke-opacity="0.43"/>
+    <path d="M350,460 C450,460 480,530 580,530" stroke-opacity="0.43"/>
+    <path d="M580,95 C680,95 710,80 810,80"     stroke-opacity="0.42"/>
+    <path d="M580,190 C680,190 710,175 810,175" stroke-opacity="0.42"/>
+    <path d="M580,265 C680,265 710,320 810,320" stroke-opacity="0.44"/>
+    <path d="M580,355 C680,355 710,390 810,390" stroke-opacity="0.42"/>
+    <path d="M580,430 C680,430 710,460 810,460" stroke-opacity="0.43"/>
+    <path d="M580,530 C680,530 710,545 810,545" stroke-opacity="0.42"/>
+    <path d="M810,175 C910,175 940,140 1040,140" stroke-opacity="0.42"/>
+    <path d="M810,250 C910,250 940,285 1040,285" stroke-opacity="0.43"/>
+    <path d="M810,320 C910,320 940,350 1040,350" stroke-opacity="0.43"/>
+    <path d="M810,460 C910,460 940,485 1040,485" stroke-opacity="0.42"/>
+    <path d="M810,545 C910,545 940,522 1040,515" stroke-opacity="0.42"/>
+  </g>
+
+  <!-- pruned / dead-end nodes -->
+  <g fill="#FFFFFF" stroke="#5A6E85" stroke-width="2.3">
+    <circle cx="350" cy="150" r="7.5" stroke-opacity="0.58"/>
+    <circle cx="350" cy="460" r="7.5" stroke-opacity="0.58"/>
+    <circle cx="580" cy="95"  r="7" stroke-opacity="0.52"/>
+    <circle cx="580" cy="190" r="7" stroke-opacity="0.54"/>
+    <circle cx="580" cy="355" r="7" stroke-opacity="0.55"/>
+    <circle cx="580" cy="430" r="7" stroke-opacity="0.54"/>
+    <circle cx="580" cy="530" r="7" stroke-opacity="0.50"/>
+    <circle cx="810" cy="80"  r="6.5" stroke-opacity="0.46"/>
+    <circle cx="810" cy="175" r="6.5" stroke-opacity="0.50"/>
+    <circle cx="810" cy="320" r="6.5" stroke-opacity="0.54"/>
+    <circle cx="810" cy="390" r="6.5" stroke-opacity="0.50"/>
+    <circle cx="810" cy="460" r="6.5" stroke-opacity="0.48"/>
+    <circle cx="810" cy="545" r="6.5" stroke-opacity="0.45"/>
+    <circle cx="1040" cy="140" r="6" stroke-opacity="0.46"/>
+    <circle cx="1040" cy="285" r="6" stroke-opacity="0.52"/>
+    <circle cx="1040" cy="350" r="6" stroke-opacity="0.48"/>
+    <circle cx="1040" cy="485" r="6" stroke-opacity="0.45"/>
+  </g>
+
+  <!-- copper planned trajectory -->
+  <g fill="none" stroke="#A8683B" stroke-width="4.2" stroke-linecap="round">
+    <path d="M130,315 C230,315 250,300 350,300"/>
+    <path d="M350,300 C450,300 480,265 580,265"/>
+    <path d="M580,265 C680,265 710,250 810,250"/>
+    <path d="M810,250 C910,250 940,215 1040,215"/>
+  </g>
+
+  <!-- halos behind copper nodes -->
+  <g>
+    <circle cx="130" cy="315" r="34" fill="url(#halo)"/>
+    <circle cx="350" cy="300" r="26" fill="url(#halo)"/>
+    <circle cx="580" cy="265" r="26" fill="url(#halo)"/>
+    <circle cx="810" cy="250" r="26" fill="url(#halo)"/>
+    <circle cx="1040" cy="215" r="30" fill="url(#halo)"/>
+  </g>
+
+  <!-- copper nodes -->
+  <g stroke="#A8683B" stroke-width="3">
+    <circle cx="130" cy="315" r="13" fill="#FFFFFF"/>
+    <circle cx="130" cy="315" r="5.5" fill="#A8683B" stroke="none"/>
+    <circle cx="350" cy="300" r="9.5" fill="#A8683B"/>
+    <circle cx="580" cy="265" r="9.5" fill="#A8683B"/>
+    <circle cx="810" cy="250" r="9.5" fill="#A8683B"/>
+    <circle cx="1040" cy="215" r="15" fill="#FFFFFF"/>
+  </g>
+
+  <!-- drawn check inside the goal node -->
+  <path d="M1033,215.5 L1038.5,221.5 L1048,208.5" fill="none" stroke="#A8683B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- drawn cross attached to the dead-end branch terminus -->
+  <circle cx="1040" cy="515" r="6" fill="#FFFFFF" stroke="#C94A3F" stroke-width="2.5" stroke-opacity="0.9"/>
+  <g stroke="#C94A3F" stroke-width="3" stroke-linecap="round" stroke-opacity="0.95">
+    <line x1="1062" y1="507" x2="1078" y2="523"/>
+    <line x1="1078" y1="507" x2="1062" y2="523"/>
+  </g>
+
+  <!-- sparse formal glyph -->
+  <text x="693" y="243" font-family="Helvetica, Arial, sans-serif" font-size="34" font-style="italic" fill="#8a5227" text-anchor="middle">&#960;</text>
+
+  <!-- labels -->
+  <text x="465" y="243" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic" fill="#8a5227" text-anchor="middle">planned path</text>
+  <text x="1040" y="177" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic" fill="#8a5227" text-anchor="middle">goal</text>
+  <text x="1090" y="521" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic" fill="#5A6E85" text-anchor="start">pruned</text>
+  <text x="104" y="322" font-family="Helvetica, Arial, sans-serif" font-size="20" font-style="italic" fill="#8a5227" text-anchor="end">question</text>
+  <text x="900" y="205" font-family="Helvetica, Arial, sans-serif" font-size="20" font-style="italic" fill="#8a5227" text-anchor="middle">reasoning step</text>
+  <line x1="856" y1="212" x2="821" y2="241" stroke="#8a5227" stroke-width="1.5" stroke-opacity="0.7"/>
+</svg>

@@ -1,0 +1,114 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotgrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.7" fill="#17365C" opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="630" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#dotgrid)"/>
+
+  <!-- flow in / out (dim slate) -->
+  <g stroke="#5A6E85" stroke-width="2.5" opacity="0.45">
+    <line x1="66" y1="395" x2="104" y2="395"/>
+    <line x1="1090" y1="395" x2="1120" y2="395"/>
+  </g>
+  <polygon points="116,395 102,388 102,402" fill="#5A6E85" opacity="0.45"/>
+  <polygon points="1132,395 1118,388 1118,402" fill="#5A6E85" opacity="0.45"/>
+
+  <!-- assembled module row: outer shell -->
+  <rect x="120" y="310" width="960" height="170" rx="4" fill="#FFFFFF" stroke="#17365C" stroke-width="3.5"/>
+
+  <!-- clean joint (navy divider) -->
+  <line x1="600" y1="312" x2="600" y2="478" stroke="#17365C" stroke-width="2.5" opacity="0.85"/>
+
+  <!-- module 1 internals: data (cylinder) -->
+  <g stroke="#5A6E85" stroke-width="2.5" fill="none" opacity="0.6">
+    <ellipse cx="240" cy="365" rx="38" ry="11"/>
+    <path d="M 202 365 V 427 A 38 11 0 0 0 278 427 V 365"/>
+    <path d="M 202 386 A 38 11 0 0 0 278 386"/>
+    <path d="M 202 407 A 38 11 0 0 0 278 407"/>
+  </g>
+
+  <!-- module 2 internals: features (bars) -->
+  <g stroke="#5A6E85" stroke-width="2.5" fill="none" opacity="0.6">
+    <line x1="410" y1="440" x2="552" y2="440" opacity="0.8"/>
+    <rect x="421" y="390" width="16" height="50"/>
+    <rect x="455" y="362" width="16" height="78"/>
+    <rect x="489" y="406" width="16" height="34"/>
+    <rect x="523" y="378" width="16" height="62"/>
+  </g>
+
+  <!-- module 3 internals: model (small net) -->
+  <g opacity="0.65">
+    <g stroke="#5A6E85" stroke-width="1.8">
+      <line x1="665" y1="355" x2="720" y2="375"/>
+      <line x1="665" y1="355" x2="720" y2="415"/>
+      <line x1="665" y1="395" x2="720" y2="375"/>
+      <line x1="665" y1="395" x2="720" y2="415"/>
+      <line x1="665" y1="435" x2="720" y2="375"/>
+      <line x1="665" y1="435" x2="720" y2="415"/>
+      <line x1="720" y1="375" x2="775" y2="395"/>
+      <line x1="720" y1="415" x2="775" y2="395"/>
+    </g>
+    <g fill="#FFFFFF" stroke="#5A6E85" stroke-width="2.5">
+      <circle cx="665" cy="355" r="8"/>
+      <circle cx="665" cy="395" r="8"/>
+      <circle cx="665" cy="435" r="8"/>
+      <circle cx="720" cy="375" r="8"/>
+      <circle cx="720" cy="415" r="8"/>
+      <circle cx="775" cy="395" r="8"/>
+    </g>
+  </g>
+
+  <!-- module 4 internals: serving (chevrons) -->
+  <g stroke="#5A6E85" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 920 365 L 948 395 L 920 425" opacity="0.65"/>
+    <path d="M 958 365 L 986 395 L 958 425" opacity="0.5"/>
+    <path d="M 996 365 L 1024 395 L 996 425" opacity="0.35"/>
+  </g>
+
+  <!-- debt seam 1 (joint between modules 1 and 2) -->
+  <g stroke="#C94A3F" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M 360 311 L 353 332 L 366 354 L 355 376 L 365 398 L 353 420 L 364 442 L 356 462 L 360 479" stroke-width="2.5"/>
+    <path d="M 357 371 L 343 379" stroke-width="1.8" opacity="0.85"/>
+    <path d="M 362 414 L 376 422" stroke-width="1.8" opacity="0.85"/>
+  </g>
+
+  <!-- debt seam 2 (joint between modules 3 and 4, being repaired) -->
+  <g stroke="#C94A3F" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M 840 311 L 846 334 L 834 356 L 845 378 L 834 400 L 846 422 L 835 444 L 843 464 L 840 479" stroke-width="2.5"/>
+    <path d="M 843 366 L 856 373" stroke-width="1.8" opacity="0.85"/>
+    <path d="M 837 432 L 824 440" stroke-width="1.8" opacity="0.85"/>
+  </g>
+
+  <!-- replacement block sliding in (copper, dashed) -->
+  <rect x="810" y="100" width="60" height="150" rx="3" fill="#A8683B" fill-opacity="0.05" stroke="#A8683B" stroke-width="3" stroke-dasharray="9 7"/>
+
+  <!-- slide guides -->
+  <g stroke="#A8683B" stroke-width="1.5" stroke-dasharray="3 6" opacity="0.5">
+    <line x1="812" y1="257" x2="812" y2="304"/>
+    <line x1="868" y1="257" x2="868" y2="304"/>
+  </g>
+
+  <!-- insertion arrow -->
+  <line x1="840" y1="258" x2="840" y2="286" stroke="#A8683B" stroke-width="3"/>
+  <polygon points="840,302 831,286 849,286" fill="#A8683B"/>
+
+  <!-- destination ghost -->
+  <rect x="810" y="311" width="60" height="168" fill="none" stroke="#A8683B" stroke-width="2.5" stroke-dasharray="7 6" opacity="0.5"/>
+
+  <!-- labels: debt callout sits in the open upper-left, tied to seam 1 -->
+  <text x="270" y="212" font-family="Helvetica, Arial, sans-serif" font-size="22" font-style="italic" fill="#C94A3F" text-anchor="middle">debt <tspan font-style="italic">&#948;</tspan></text>
+  <path d="M 292 222 C 320 252 344 280 358 306" fill="none" stroke="#C94A3F" stroke-width="1.5" opacity="0.7"/>
+  <text x="892" y="186" font-family="Helvetica, Arial, sans-serif" font-size="22" font-style="italic" fill="#8a5227">refactor</text>
+
+  <!-- stage labels under the shell -->
+  <g font-family="Helvetica, Arial, sans-serif" font-size="18" font-style="italic" fill="#5A6E85" text-anchor="middle">
+    <text x="240" y="505">data</text>
+    <text x="480" y="505">features</text>
+    <text x="720" y="505">model</text>
+    <text x="975" y="505">serving</text>
+  </g>
+</svg>

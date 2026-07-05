@@ -1,0 +1,89 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.5" fill="#17365C" opacity="0.035"/>
+    </pattern>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="630" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#dotgrid)"/>
+
+  <!-- ============ left: compact neural network ============ -->
+  <g stroke="#5A6E85" stroke-width="2" opacity="0.42">
+    <!-- input (3) -> hidden (4) -->
+    <line x1="130" y1="235" x2="225" y2="195"/>
+    <line x1="130" y1="235" x2="225" y2="275"/>
+    <line x1="130" y1="235" x2="225" y2="355"/>
+    <line x1="130" y1="235" x2="225" y2="435"/>
+    <line x1="130" y1="315" x2="225" y2="195"/>
+    <line x1="130" y1="315" x2="225" y2="275"/>
+    <line x1="130" y1="315" x2="225" y2="355"/>
+    <line x1="130" y1="315" x2="225" y2="435"/>
+    <line x1="130" y1="395" x2="225" y2="195"/>
+    <line x1="130" y1="395" x2="225" y2="275"/>
+    <line x1="130" y1="395" x2="225" y2="355"/>
+    <line x1="130" y1="395" x2="225" y2="435"/>
+    <!-- hidden (4) -> output (2) -->
+    <line x1="225" y1="195" x2="320" y2="275"/>
+    <line x1="225" y1="195" x2="320" y2="355"/>
+    <line x1="225" y1="275" x2="320" y2="275"/>
+    <line x1="225" y1="275" x2="320" y2="355"/>
+    <line x1="225" y1="355" x2="320" y2="275"/>
+    <line x1="225" y1="355" x2="320" y2="355"/>
+    <line x1="225" y1="435" x2="320" y2="275"/>
+    <line x1="225" y1="435" x2="320" y2="355"/>
+  </g>
+  <g fill="#FFFFFF" stroke="#17365C" stroke-width="2.5">
+    <circle cx="130" cy="235" r="11"/>
+    <circle cx="130" cy="315" r="11"/>
+    <circle cx="130" cy="395" r="11"/>
+    <circle cx="225" cy="195" r="11"/>
+    <circle cx="225" cy="275" r="11"/>
+    <circle cx="225" cy="355" r="11"/>
+    <circle cx="225" cy="435" r="11"/>
+    <circle cx="320" cy="275" r="11"/>
+    <circle cx="320" cy="355" r="11"/>
+  </g>
+
+  <text x="225" y="483" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic" fill="#5A6E85">neural network</text>
+
+  <!-- connector: network -> property card -->
+  <line x1="343" y1="315" x2="396" y2="315" stroke="#5A6E85" stroke-width="2.5"/>
+  <polygon points="408,315 394,308 394,322" fill="#5A6E85"/>
+
+  <!-- ============ middle: property card ============ -->
+  <rect x="416" y="258" width="212" height="114" rx="10" fill="#FFFFFF" stroke="#A8683B" stroke-width="2.5"/>
+  <text x="522" y="327" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="34" font-style="italic" fill="#17365C">&#966; : x &#8776; x&#8242;</text>
+  <text x="522" y="406" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" font-style="italic" fill="#8a5227">property &#966;</text>
+
+  <!-- connector: card -> verifier -->
+  <line x1="628" y1="315" x2="682" y2="315" stroke="#5A6E85" stroke-width="2.5"/>
+  <polygon points="694,315 680,308 680,322" fill="#5A6E85"/>
+
+  <!-- ============ verifier diamond ============ -->
+  <polygon points="700,315 762,253 824,315 762,377" fill="#FFFFFF" stroke="#17365C" stroke-width="3"/>
+  <polygon points="731,315 762,284 793,315 762,346" fill="none" stroke="#9FB3CB" stroke-width="2" opacity="0.75"/>
+  <text x="762" y="412" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" font-style="italic" fill="#5A6E85">verifier</text>
+
+  <!-- ============ verified path (copper) ============ -->
+  <path d="M 824 315 C 885 315, 925 240, 992 219" fill="none" stroke="#A8683B" stroke-width="3.5"/>
+  <polygon points="1006,215 992,211 995,225" fill="#A8683B"/>
+  <circle cx="1056" cy="210" r="31" fill="#FFFFFF" stroke="#A8683B" stroke-width="3"/>
+  <path d="M 1041 211 l 11 12 l 21 -25" fill="none" stroke="#A8683B" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1056" y="279" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" font-style="italic" fill="#8a5227">verified</text>
+
+  <!-- ============ counterexample path (muted red) ============ -->
+  <path d="M 824 315 C 885 315, 925 392, 988 410" fill="none" stroke="#C94A3F" stroke-width="3" stroke-dasharray="9 7"/>
+  <polygon points="1002,414 989,405 987,419" fill="#C94A3F"/>
+  <!-- two small dots that differ -->
+  <circle cx="1020" cy="422" r="10" fill="#9FB3CB" stroke="#17365C" stroke-width="2.5"/>
+  <circle cx="1092" cy="422" r="10" fill="#C94A3F" stroke="#C94A3F" stroke-width="2.5"/>
+  <!-- not-equal glyph drawn as paths -->
+  <g stroke="#C94A3F" stroke-width="2.5" stroke-linecap="round">
+    <line x1="1048" y1="417.5" x2="1064" y2="417.5"/>
+    <line x1="1048" y1="426.5" x2="1064" y2="426.5"/>
+    <line x1="1051" y1="431" x2="1061" y2="413"/>
+  </g>
+  <text x="1056" y="472" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="21" font-style="italic" fill="#C94A3F">counterexample</text>
+</svg>
