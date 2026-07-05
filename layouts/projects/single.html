@@ -9,6 +9,10 @@
 <section class="section">
   <div class="container container-readable">
 
+    {{ with .Params.image }}
+    <img class="project-hero" src="{{ . | relURL }}" alt="{{ $.Params.image_alt | default (printf "%s — project figure" $.Title) }}" width="1200" height="630">
+    {{ end }}
+
     {{ with .Params.description }}
     <p class="page-lead">{{ . }}</p>
     {{ end }}

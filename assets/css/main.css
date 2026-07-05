@@ -1422,6 +1422,34 @@ body.cite-modal-open {
   display: none;
 }
 
+/* Banner figure bleeding to the card edges above the title */
+.project-card-image {
+  display: block;
+  overflow: hidden;
+  margin: -0.58rem -0.66rem 0.55rem;
+  border-bottom: 1px solid var(--glass-hairline);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background: #fff;
+}
+
+.project-card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+}
+
+.project-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.1rem;
+  border: 1px solid var(--glass-hairline);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+
 .project-card-header {
   display: flex;
   align-items: flex-start;

@@ -1,32 +1,51 @@
 ---
-title: "Fairness Verification and Repair"
+title: "Fairify: Fairness Verification of Neural Networks"
 description: >
-  Formal, empirical, and search-based techniques for detecting, explaining, and
-  repairing fairness issues in machine-learning software.
+  SMT-based verification of individual fairness in neural networks, using input
+  partitioning and sound neural pruning to produce certificates or counterexamples
+  for real-world models.
 status: "completed"
+image: "/images/projects/fairify.png"
+image_alt: "Diagram of neural network pruning applied to one partition of the input domain"
+github: "https://github.com/sumonbis/Fairify"
+paper: "https://doi.org/10.1109/ICSE48619.2023.00134"
+demo: ""
+artifact: ""
 people: ["Sumon Biswas", "Hridesh Rajan", "Usman Gohar", "Giang Nguyen"]
 categories: ["Fairness", "Verification"]
+tags: []
 publications:
   - "fairify-icse23"
-  - "ensemble-fairness-icse23"
-  - "fair-automl-fse23"
-  - "fair-preprocessing-fse21"
-  - "ml-fairness-fse20"
 featured: true
-date: 2023-05-14
+date: 2023-05-15
 ---
 
 ## Overview
 
-This project studies fairness as an engineering property of ML software. The work
-spans formal verification of neural networks, empirical fairness evaluation,
-fairness-aware repair, and the compositional effects of pipelines and ensembles.
+We built Fairify, an SMT-based approach that verifies individual fairness of deep
+neural networks in production. Individual fairness requires that any two individuals
+who differ only in protected attributes such as race, sex, or age receive similar
+predictions; unlike group metrics, it captures worst-case discrimination. The
+property is hard to verify because it must be checked globally over the input
+domain and because of the non-linear computation nodes in the network.
 
-## Current Focus
+We encoded individual fairness as pre- and post-conditions of the network and made
+verification tractable in three steps: input partitioning, sound neural pruning,
+and heuristic-based neural pruning. The key observation was that many neurons
+remain inactive when only a smaller part of the input domain is considered, so
+Fairify assigns a copy of the network to each partition and prunes it using
+interval arithmetic and layer-wise analysis before invoking the SMT solver.
 
-- Verification methods that provide stronger guarantees than testing alone
-- Fairness repair that accounts for accuracy and practical performance constraints
-- How preprocessing, ensembles, and model optimization choices compose fairness risks
+## Key Results
 
-The project connects several papers on fairness verification, mitigation, repair,
-and empirical analysis of ML models.
+- Encoded individual fairness as SMT pre- and post-conditions, so each verification
+  query returns either a fairness certificate or a concrete counterexample.
+- Made global verification tractable by partitioning the input domain and applying
+  sound pruning (interval arithmetic, layer-wise analysis) plus activation-heuristic
+  pruning to each partition's copy of the network.
+- Verified 25 real-world neural networks collected from four different sources,
+  showing better effectiveness, scalability, and performance than baseline and
+  closely related work.
+- Supported relaxed and targeted fairness queries and partial certification, and
+  located violations with counterexamples that make fairness repair explainable;
+  published at ICSE 2023.

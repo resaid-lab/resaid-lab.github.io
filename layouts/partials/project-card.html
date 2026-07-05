@@ -5,6 +5,11 @@
   {{- $catSlugs = $catSlugs | append (. | urlize) -}}
 {{- end -}}
 <article class="project-card" data-project-card data-filter-scope="{{ $scope }}" data-categories="{{ delimit $catSlugs " " }}">
+  {{ with $page.Params.image }}
+  <a class="project-card-image" href="{{ $page.RelPermalink }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ . | relURL }}" alt="{{ $page.Params.image_alt | default (printf "%s — project figure" $page.Title) }}" width="1200" height="630" loading="lazy">
+  </a>
+  {{ end }}
   <div class="project-card-header">
     <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
   </div>
