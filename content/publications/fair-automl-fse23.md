@@ -5,7 +5,7 @@ venue: "31st ACM Joint European Software Engineering Conference and Symposium on
 venue_short: "FSE"
 year: 2023
 date: 2023-12-03
-pdf: ""
+pdf: "/uploads/fair-automl-FSE23.pdf"
 doi: "https://doi.org/10.1145/3611643.3616257"
 arxiv: ""
 code: "https://github.com/giangnm58/Fair-AutoML"

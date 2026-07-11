@@ -5,7 +5,7 @@ venue: "30th ACM Joint European Software Engineering Conference and Symposium on
 venue_short: "FSE"
 year: 2022
 date: 2022-11-14
-pdf: ""
+pdf: "/uploads/ml-techdebt-FSE22.pdf"
 doi: "https://doi.org/10.1145/3540250.3549088"
 arxiv: ""
 code: "https://github.com/DavidMOBrien/23Shades"

@@ -5,7 +5,7 @@ venue: "45th IEEE/ACM International Conference on Software Engineering"
 venue_short: "ICSE"
 year: 2023
 date: 2023-05-14
-pdf: ""
+pdf: "/uploads/ensemble-fairness-ICSE23.pdf"
 doi: "https://doi.org/10.1109/ICSE48619.2023.00133"
 arxiv: ""
 code: "https://github.com/UsmanGohar/FairEnsemble"

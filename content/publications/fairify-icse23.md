@@ -5,7 +5,7 @@ venue: "45th IEEE/ACM International Conference on Software Engineering"
 venue_short: "ICSE"
 year: 2023
 date: 2023-05-14
-pdf: ""
+pdf: "/uploads/fairify-ICSE23.pdf"
 doi: "https://doi.org/10.1109/ICSE48619.2023.00134"
 arxiv: ""
 code: "https://github.com/sumonbis/Fairify"
