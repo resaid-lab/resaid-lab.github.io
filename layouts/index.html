@@ -45,7 +45,7 @@
     {{ end }}
     {{ partial "project-filter.html" (dict "pages" $featured "scope" "home-projects" "label" "Filter featured projects by topic") }}
     <div class="projects-grid">
-      {{ range $featured }}{{ partial "project-card.html" (dict "page" . "scope" "home-projects") }}{{ end }}
+      {{ range $featured }}{{ partial "project-card.html" (dict "page" . "scope" "home-projects" "hideImage" true) }}{{ end }}
     </div>
     <a href="{{ "/research/" | relURL }}" class="view-all">All projects &rarr;</a>
   </div>
