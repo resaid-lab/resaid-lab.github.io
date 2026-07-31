@@ -2174,6 +2174,18 @@ body.cite-modal-open {
 
 /* Responsive */
 @media (max-width: 1024px) {
+  /* Give the bar more room than the 48px desktop height — with the wordmark
+     and the toggle side by side it reads cramped — and make it near-opaque so
+     content scrolling underneath no longer shows through behind the logo.
+     .site-nav is offset by this same variable, so the dropdown follows. */
+  :root {
+    --header-height: 58px;
+  }
+
+  .site-header {
+    background: rgba(255, 255, 255, 0.97);
+  }
+
   .menu-toggle {
     display: flex;
     align-items: center;
@@ -2370,9 +2382,17 @@ body.cite-modal-open {
 }
 
 /* Mobile opt-out: long project/publication grids drop card blur and raise surfaces
-   to near-opaque on phones (header keeps its blur). Prevents low-end/Firefox jank. */
+   to near-opaque on phones. Prevents low-end/Firefox jank. */
 @media (max-width: 700px) {
   body { background-attachment: scroll; } /* avoid iOS fixed-attachment jank */
+
+  /* The header is already near-opaque at this width, so the blur only costs a
+     recomposite on every scroll frame. */
+  .site-header {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    will-change: auto;
+  }
 
   .project-card, .pi-card, .hero-panel,
   .post-item, .post-row, .research-theme-item,
