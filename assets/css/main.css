@@ -432,18 +432,21 @@ pre code {
   box-shadow: var(--glass-catch), var(--glass-shadow);
 }
 
-/* Header */
+/* Header
+   Deliberately NOT glass. backdrop-filter on a position:sticky element is a
+   long-standing source of clipped/offset painting in Chrome — the promoted
+   compositing layer (made permanent by will-change) can render the bar's
+   contents cut off while scrolling, most visibly on narrow windows. The header
+   is on screen at all times, so it gets a plain opaque background; the cards
+   and chips keep the glass treatment. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 200;
   height: var(--header-height);
   border-bottom: 1px solid var(--glass-hairline);
-  background: var(--glass-surface-quiet);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
+  background: #ffffff;
   box-shadow: var(--glass-catch), 0 4px 14px rgba(16, 40, 66, 0.05);
-  will-change: backdrop-filter; /* only here — recomposites every scroll frame */
 }
 
 /* height:100% only resolves if every ancestor has a definite height; without
@@ -2175,15 +2178,10 @@ body.cite-modal-open {
 /* Responsive */
 @media (max-width: 1024px) {
   /* Give the bar more room than the 48px desktop height — with the wordmark
-     and the toggle side by side it reads cramped — and make it near-opaque so
-     content scrolling underneath no longer shows through behind the logo.
+     and the toggle side by side it reads cramped.
      .site-nav is offset by this same variable, so the dropdown follows. */
   :root {
     --header-height: 58px;
-  }
-
-  .site-header {
-    background: rgba(255, 255, 255, 0.97);
   }
 
   .menu-toggle {
@@ -2385,14 +2383,6 @@ body.cite-modal-open {
    to near-opaque on phones. Prevents low-end/Firefox jank. */
 @media (max-width: 700px) {
   body { background-attachment: scroll; } /* avoid iOS fixed-attachment jank */
-
-  /* The header is already near-opaque at this width, so the blur only costs a
-     recomposite on every scroll frame. */
-  .site-header {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    will-change: auto;
-  }
 
   .project-card, .pi-card, .hero-panel,
   .post-item, .post-row, .research-theme-item,
