@@ -432,21 +432,18 @@ pre code {
   box-shadow: var(--glass-catch), var(--glass-shadow);
 }
 
-/* Header
-   Deliberately NOT glass. backdrop-filter on a position:sticky element is a
-   long-standing source of clipped/offset painting in Chrome — the promoted
-   compositing layer (made permanent by will-change) can render the bar's
-   contents cut off while scrolling, most visibly on narrow windows. The header
-   is on screen at all times, so it gets a plain opaque background; the cards
-   and chips keep the glass treatment. */
+/* Header */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 200;
   height: var(--header-height);
   border-bottom: 1px solid var(--glass-hairline);
-  background: #ffffff;
+  background: var(--glass-surface-quiet);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
   box-shadow: var(--glass-catch), 0 4px 14px rgba(16, 40, 66, 0.05);
+  will-change: backdrop-filter; /* only here — recomposites every scroll frame */
 }
 
 /* height:100% only resolves if every ancestor has a definite height; without
@@ -2177,13 +2174,6 @@ body.cite-modal-open {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  /* Give the bar more room than the 48px desktop height — with the wordmark
-     and the toggle side by side it reads cramped.
-     .site-nav is offset by this same variable, so the dropdown follows. */
-  :root {
-    --header-height: 58px;
-  }
-
   .menu-toggle {
     display: flex;
     align-items: center;
@@ -2199,12 +2189,21 @@ body.cite-modal-open {
     border-top: 1px solid var(--color-hairline);
     border-bottom: 1px solid var(--color-border);
     background: #fff;
-    transform: translateY(-110%);
-    transition: transform 0.25s ease;
+    /* Slide the panel clear of the viewport, not just past its own height:
+       it starts at top:var(--header-height), so translateY(-110%) leaves the
+       bottom 0.1×height + header-height still on screen — an opaque white band
+       over the top of the bar that clipped the logo and the toggle. Offsetting
+       by the header height as well guarantees it clears at any panel height.
+       visibility also keeps the closed links out of the focus order. */
+    transform: translateY(calc(-100% - var(--header-height)));
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
   }
 
   .site-nav.open {
     transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.25s ease, visibility 0s;
   }
 
   .site-nav ul {
