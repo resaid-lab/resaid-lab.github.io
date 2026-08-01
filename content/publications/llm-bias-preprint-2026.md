@@ -1,10 +1,10 @@
 ---
 title: "Bias Testing and Mitigation in Black Box LLMs using Metamorphic Relations"
 authors: "Sina Salimian, Gias Uddin, Sumon Biswas, Henry Leung"
-venue: "ACM Transactions on Software Engineering and Methodology"
-venue_short: "Preprint"
+venue: "In minor revision, ACM Transactions on Software Engineering and Methodology"
+venue_short: "TOSEM"
 year: 2026
-date: 2026-01-01
+date: 2026-07-12
 pdf: ""
 doi: ""
 arxiv: "https://arxiv.org/abs/2512.00556"

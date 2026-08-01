@@ -12,7 +12,7 @@ photo: "/images/people/alif-al-hasan.jpg"
 research_interests: >
   Responsible AI Engineering, Software engineering for AI, Autonomous Agent Safety
 publications:
-  - "what-breaks-when-llms-code-ase26"
+  - "agentic-code-safety-preprint-2026"
 date: 2026-07-25
 ---
 
